@@ -58,7 +58,7 @@
             </li>
             <li class="text-lg font-normal hover:text-red-500 py-2.5">
                 <a href="">
-                    <h1>Developers</h1>
+                    <h1>Contacts</h1>
                 </a>
             </li>
             <li class="text-lg font-semibold hover:text-red-500 bg-white text-black px-8 py-2.5 rounded-full hover:bg-black">

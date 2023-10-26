@@ -69,7 +69,7 @@
         </ul>
     </nav>
 
-    <div class="container bg-white relative p-10 flex mx-auto mt-10 rounded-lg">
+    <div class="container bg-red relative p-10 flex mx-auto mt-10 rounded-lg">
         <div class="first-layer">
 
         </div>

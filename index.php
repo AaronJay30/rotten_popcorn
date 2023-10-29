@@ -470,6 +470,14 @@
         $('#sidebar').toggleClass('left-[0px] ');
         $('.buttons__burger').toggleClass('top-[40px] ');
     })
+
+    window.addEventListener('blur', () => {
+        document.title = "I miss you comeback 💔 - RottenPopcorn";
+    })
+
+    window.addEventListener('focus', () => {
+        document.title = "Rotten Popcorn";
+    })
 </script>
 
 </html>

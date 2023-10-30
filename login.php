@@ -4,16 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/index.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="img/RottenPopCorn(LogoOnly).png">
-    <title>Admin | Rotten Popcorn</title>
+    <title>Rotten Popcorn</title>
 </head>
+
+<style>
+    body {
+        background-image: url('img/bg-image.jpg');
+        background-size: cover;
+    }
+
+    nav {
+        background: rgb(140, 21, 21);
+    }
+
+    nav .logo-container img {
+        transition: 200ms ease-in-out;
+    }
+
+    nav .logo-container img:hover {
+        transform: scale(1.2);
+    }
+
+    nav ul li {
+        transition: 200ms ease-in-out;
+    }
+
+    nav ul li:hover {
+        transform: scale(1.1);
+    }
+</style>
 
 <body>
     <!-- <?php include 'config/loader.php'; ?> -->
 
-    <nav class="w-full py-4 px-8 flex flex-row items-center justify-between relative">
+    <nav class="w-full py-1 px-8 flex flex-row items-center justify-between relative">
         <a href="index.php" class="logo-container">
             <img src="img/RottenPopCorn(Text).png" alt="Rotten Popcorn" class="h-20">
         </a>

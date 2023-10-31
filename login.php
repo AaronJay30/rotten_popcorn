@@ -1,79 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/x-icon" href="img/RottenPopCorn(LogoOnly).png">
-    <title>Rotten Popcorn</title>
+    <link rel="stylesheet" href="css/login_register.css">
+    <title>Login</title>
 </head>
-
-<style>
-    body {
-        background-image: url('img/bg-image.jpg');
-        background-size: cover;
-    }
-
-    nav {
-        background: rgb(140, 21, 21);
-    }
-
-    nav .logo-container img {
-        transition: 200ms ease-in-out;
-    }
-
-    nav .logo-container img:hover {
-        transform: scale(1.2);
-    }
-
-    nav ul li {
-        transition: 200ms ease-in-out;
-    }
-
-    nav ul li:hover {
-        transform: scale(1.1);
-    }
-</style>
-
 <body>
-    <!-- <?php include 'config/loader.php'; ?> -->
-
-    <nav class="w-full py-1 px-8 flex flex-row items-center justify-between relative">
-        <a href="index.php" class="logo-container">
-            <img src="img/RottenPopCorn(Text).png" alt="Rotten Popcorn" class="h-20">
-        </a>
-
-        <ul class="flex flex-row gap-8 text-white">
-            <li class="text-lg font-normal hover:text-red-500 py-2.5">
-                <a href="">
-                    <h1>Movie</h1>
-                </a>
-            </li>
-            <li class="text-lg font-normal hover:text-red-500 py-2.5">
-                <a href="">
-                    <h1>About</h1>
-                </a>
-            </li>
-            <li class="text-lg font-normal hover:text-red-500 py-2.5">
-                <a href="">
-                    <h1>Contacts</h1>
-                </a>
-            </li>
-            <li class="text-lg font-semibold hover:text-red-500 bg-white text-black px-8 py-2.5 rounded-full hover:bg-black">
-                <a href="" class="">
-                    <h1>Sign in</h1>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="container bg-red relative p-10 flex mx-auto mt-10 rounded-lg">
-        <div class="first-layer">
-
+    <div class="main">
+        <div class="sub-main">
+            <!-- <div class="curtain"></div> -->
+            <div class="login">
+                <h2>Welcome</h2>
+                <div class="picture">
+                    <img class="pic" src="img/RottenPopCorn(Logo).png" alt="">
+                </div>
+                <form class="form" action="">
+                    <div class="email">
+                        <label for="">Email</label><br>
+                        <input type="email" name="" id="" placeholder="Email">
+                    </div>
+                    <div class="pass">
+                        <label for="">Password</label><br>
+                        <input type="password" name="" id="" placeholder="Password">
+                    </div>
+                    <div class="button">
+                        <input class="submit" type="submit" value="Login">
+                    </div>
+                    <div class="href">
+                        <a href="">Forgot Password</a>
+                        <i>? or Do you have</i>
+                        <a href="register.php">Account</a>
+                        <i>?</i>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>
-
 </html>

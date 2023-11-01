@@ -235,6 +235,7 @@
 
     <!-- CONTENT MANAGEMENT SECTION -->
     <div class="container relative p-10 flex mx-auto mt-24 rounded-lg overflow-auto border-4 border-white">
+        <h1>Testing Git</h1>
 
     </div>
     

@@ -244,22 +244,84 @@
 
     <!-- CONTENT MANAGEMENT SECTION -->
     <div class="container relative p-10 mx-auto mt-24 rounded-lg overflow-auto border-4 border-white">
-        <div class="flex flex-row justify-between items-center w-full z-1 border-b-4 border-white pb-8 border-dotted gap-x-[30rem]">
-            <!-- <div class="col-span-2  max-[600px]:col-span-1"> -->
+        <div class="flex justify-center items-center w-full z-1 border-b-4 border-white pb-8 border-dotted">
 
             <!-- List of Movies -->
             <div>
-                <h1 class="text-white font-bold text-5xl uppercase">
+                <h1 class="text-white font-bold text-6xl uppercase">
                     Available Movies
                     <button onclick="modal.showModal(modal)"><i class='bx bx-plus-circle bx-tada text-white'></i></button>
                 </h1>
 
                 <!-- Main modal -->
+                <dialog id="modal" class="p-5 backdrop:bg-black backdrop:opacity-80 rounded-2xl w-3/5  max-[1000px]:w-4/5  max-[600px]:w-full">
+                <div class="relative w-full p-10 grid grid-cols-3 max-[1000px]:grid-cols-1 items-center gap-x-8 max-h-full">
 
+                    <!-- Column 1 for Movie Poster Column 2 for Movie Info -->
+                    <!-- Movie Poster (size 27" x 40") -->
+                    <div class="flex items-center justify-center w-full col-span-1">
+                        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                </svg>
+                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                            </div>
+                            <input id="dropzone-file" type="file" class="hidden" />
+                        </label>
+                    </div>
+
+                    <!-- Movie Details -->
+                    <form class="col-span-2">
+                        <div class="grid gap-6 mb-6 md:grid-cols-2">
+                            <div>
+                                <label for="movie-title" class="block mb-2 text-sm font-medium text-gray-900">Movie Title</label>
+                                <input type="text" id="movie-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Title" required>
+                            </div>
+                            <div>
+                                <label for="movie-release" class="block mb-2 text-sm font-medium text-gray-900">Movie Release</label>
+                                <input type="text" id="movie-release" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Release" required>
+                            </div>
+                            <div>
+                                <label for="movie-director" class="block mb-2 text-sm font-medium text-gray-900">Movie Director</label>
+                                <input type="text" id="movie-director" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Director" required>
+                            </div>
+                            <div>
+                                <label for="movie-summary" class="block mb-2 text-sm font-medium text-gray-900">Movie Summary</label>
+                                <input type="text" id="movie-summary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Summary" required>
+                            </div>
+                            <!-- <div>
+                                <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Website URL</label>
+                                <input type="url" id="website" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="flowbite.com" required>
+                            </div>
+                            <div>
+                                <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900">Unique visitors (per month)</label>
+                                <input type="number" id="visitors" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="" required>
+                            </div> -->
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
+                            <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="john.doe@company.com" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                            <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="•••••••••" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
+                            <input type="password" id="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="•••••••••" required>
+                        </div>
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        <button onclick="modal.close(modal)" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
+                    </form>
+                </div>
+                </dialog>
             </div>
 
             <!-- Search -->
-            <form class="flex items-center flex-1">
+            <!-- <form class="flex items-center flex-1">
                 <label for="simple-search" class="sr-only">Search</label>
                 <div class="relative w-full">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -275,16 +337,17 @@
                     </svg>
                     <span class="sr-only">Search</span>
                 </button>
-            </form>
+            </form> -->
         </div>
 
         <!-- FILTER SECTION -->
+        <!-- <div class="flex flex-row justify-evenly flex-wrap w-full z-1 border-b-4 border-white py-2 border-dotted"> -->
         <div class="flex flex-row justify-evenly flex-wrap w-full z-1 border-b-4 border-white py-2 border-dotted">
 
             <!-- Dropdown 1 -->
-            <div class="flex justify-center items-center w-1/5">
+            <div class="flex justify-center items-center">
 
-                <button data-dropdown-toggle="dropdown-sort" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-between items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
+                <button data-dropdown-toggle="dropdown-sort" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     SORT
                     <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -322,8 +385,8 @@
             </div>
 
             <!-- Dropdown 2 -->
-            <div class="flex justify-center items-center w-1/5">
-                <button data-dropdown-toggle="dropdown-genre" class="w-full flex-shrink-0 z-10 justify-between text-gray-900 inline-flex items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
+            <div class="flex justify-center items-center">
+                <button data-dropdown-toggle="dropdown-genre" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     GENRE
                     <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -395,8 +458,8 @@
             </div>
 
             <!-- Dropdown 3 -->
-            <div class="flex justify-center items-center w-1/5">
-                <button data-dropdown-toggle="dropdown-rating" class=" w-full flex-shrink-0 z-10 justify-between text-gray-900 inline-flex items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
+            <div class="flex justify-center items-center">
+                <button data-dropdown-toggle="dropdown-rating" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     RATING
                     <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -468,8 +531,8 @@
             </div>
 
             <!-- Dropdown 4 -->
-            <div class="flex justify-center items-center w-1/5">
-                <button data-dropdown-toggle="dropdown-score" class="w-full flex-shrink-0 z-10 justify-between text-gray-900 inline-flex items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
+            <div class="flex justify-center items-center">
+                <button data-dropdown-toggle="dropdown-score" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     AUDIENCE SCORE
                     <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -539,6 +602,37 @@
                 </div>
             </div>
 
+            <!-- Dropdown 5 -->
+            <div class="flex justify-center items-center">
+                <button class="w-full text-center text-white flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium bg-red-500 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
+                    RESET FILTERS
+                    <!-- <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                    </svg> -->
+                </button>
+            </div>
+
+            <!--  -->
+            <div class="flex justify-center items-center w-[30rem]">
+                <form class="flex items-center flex-1">
+                    <label for="simple-search" class="sr-only">Search</label>
+                    <div class="relative w-full">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2" />
+                            </svg>
+                        </div>
+                        <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="What movie are you looking for?" required>
+                    </div>
+                    <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                        <span class="sr-only">Search</span>
+                    </button>
+                </form>
+            </div>
+
             <!-- <div class="flex justify-center items-center">
                 <form class="flex items-center">   
                     <label for="simple-search" class="sr-only">Search</label>
@@ -558,13 +652,7 @@
                     </button>
                 </form>
             </div> -->
-
-
-
-
         </div>
-
-        <!-- ENDOF FILTER SECTION -->
 
         <div class="grid grid-cols-6 gap-4 max-[1200px]:grid-cols-2 max-[600px]:grid-cols-1 w-full z-1 border-b-4 border-white py-8 border-dotted">
             <!-- Movie Card 1 -->
@@ -577,16 +665,14 @@
                     <div class="relative w-full">
                         <img class=" p-3 rounded-t-lg relative z-0 group-hover:blur-sm duration-100" src="./img/posters/parasite.jpg" alt="Movie Poster" class="" />
 
-                        <div class="absolute w-full p-3 flex flex-col gap-y-2 justify-evenly duration-300 bottom-1 opacity-0 group-hover:bottom-[30%] group-hover:opacity-100">
-                            <button class="bg-gray-900 text-white p-2.5 hover:bg-gray-700">See Reviews</button>
-                            <button class="bg-gray-900 text-white p-2.5 hover:bg-gray-700">Edit Info</button>
+                        <div class="absolute w-full p-3 py-5 flex flex-col gap-y-2 justify-evenly duration-300 bottom-1 opacity-0 group-hover:bottom-[40%] group-hover:opacity-100">
+                            <!-- Redirect to Detailed Info of Movie -->
+                            <button onclick="window.location.href='admin_movie.php'" class="bg-gray-900 text-white p-2.5 hover:bg-gray-700">See Reviews</button>
+                            <!-- <button class="bg-gray-900 text-white p-2.5 hover:bg-gray-700">Edit Info</button> -->
                         </div>
 
                     </div>
-                    <!-- <div class="relative h-full w-full bg-black/80 relative items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover: opacity-100">
-                            <button class="bg-black text-white py-2 px-5">See Reviews</button>
-                            <button class="bg-black text-white py-2 px-5">Edit Info</button>
-                        </div> -->
+
                     <div class="px-2 pb-4">
                         <!-- Movie Title -->
                         <a href="#">
@@ -594,10 +680,6 @@
                         </a>
                     </div>
                 </a>
-
-
-
-
 
             </div>
 
@@ -694,86 +776,7 @@
         </div>
 
     </div>
-
-
-
 </body>
-
-<dialog id="modal" class="p-5 backdrop:bg-black backdrop:opacity-80 rounded-2xl w-3/5  max-[1000px]:w-4/5  max-[600px]:w-full">
-    <div class="relative w-full p-10 grid grid-cols-3 max-[1000px]:grid-cols-1 items-center gap-x-8 max-h-full">
-        <!-- Modal content -->
-
-        <!-- POPUP LAYOUT -->
-        <!-- Column 1 for Movie Poster Column 2 for Movie Info -->
-        <!-- Movie Poster -->
-        <!-- Movie Poster size 27" x 40" -->
-        <div class="flex items-center justify-center w-full col-span-1">
-            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
-                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                    </svg>
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                </div>
-                <input id="dropzone-file" type="file" class="hidden" />
-            </label>
-        </div>
-
-        <!-- Movie Details -->
-        <form class="col-span-2">
-            <div class="grid gap-6 mb-6 md:grid-cols-2 ">
-                <div>
-                    <label for="movie-title" class="block mb-2 text-sm font-medium text-gray-900">Movie Title</label>
-                    <input type="text" id="movie-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Title" required>
-                </div>
-                <div>
-                    <label for="movie-release" class="block mb-2 text-sm font-medium text-gray-900">Movie Release</label>
-                    <input type="text" id="movie-release" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Release" required>
-                </div>
-                <div>
-                    <label for="movie-director" class="block mb-2 text-sm font-medium text-gray-900">Movie Director</label>
-                    <input type="text" id="movie-director" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Director" required>
-                </div>
-                <div>
-                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone number</label>
-                    <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
-                </div>
-                <div>
-                    <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Website URL</label>
-                    <input type="url" id="website" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="flowbite.com" required>
-                </div>
-                <div>
-                    <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900">Unique visitors (per month)</label>
-                    <input type="number" id="visitors" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="" required>
-                </div>
-            </div>
-            
-            <div class="mb-6">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
-                <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required>
-            </div>
-            <div class="mb-6">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required>
-            </div>
-            <div class="mb-6">
-                <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                <input type="password" id="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required>
-            </div>
-            <div class="flex items-start mb-6">
-                <div class="flex items-center h-5">
-                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required>
-                </div>
-                <label for="remember" class="ml-2 text-sm font-medium text-gray-900">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
-            </div>
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-            <button onclick="modal.close(modal)" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
-        </form>
-
-    </div>
-</dialog>
-
 
 <!-- SCRIPT -->
 <script>
@@ -787,8 +790,9 @@
     })
 
     window.addEventListener('focus', () => {
-        document.title = "Rotten Popcorn";
+        document.title = "Admin | Rotten Popcorn";
     })
+
 </script>
 
 </html>

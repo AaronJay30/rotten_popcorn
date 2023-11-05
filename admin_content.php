@@ -320,29 +320,10 @@
                 </dialog>
             </div>
 
-            <!-- Search -->
-            <!-- <form class="flex items-center flex-1">
-                <label for="simple-search" class="sr-only">Search</label>
-                <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2" />
-                        </svg>
-                    </div>
-                    <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="What movie are you looking for?" required>
-                </div>
-                <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                    </svg>
-                    <span class="sr-only">Search</span>
-                </button>
-            </form> -->
         </div>
 
         <!-- FILTER SECTION -->
-        <!-- <div class="flex flex-row justify-evenly flex-wrap w-full z-1 border-b-4 border-white py-2 border-dotted"> -->
-        <div class="flex flex-row justify-evenly flex-wrap w-full z-1 border-b-4 border-white py-2 border-dotted">
+        <div class="flex flex-row justify-evenly flex-wrap w-full z-1 border-b-4 border-white py-2 border-dotted max-[640px]:grid grid-cols-1 gap-4">
 
             <!-- Dropdown 1 -->
             <div class="flex justify-center items-center">
@@ -440,17 +421,11 @@
                     </ul>
 
                     <div class="grid grid-cols-2">
-                        <a href="#" class="flex items-center p-3 text-sm font-medium text-red-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 text-gray-900 dark:text-red-500 hover:underline">
-                            <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z" />
-                            </svg>
-                            CLEAR ALL
+                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
+                            <p class="hover:animate-pulse">CLEAR ALL</p>
                         </a>
-                        <a href="#" class="flex items-center p-3 text-sm font-medium text-red-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 text-gray-900 dark:text-red-500 hover:underline">
-                            <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z" />
-                            </svg>
-                            APPLY
+                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
+                            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">APPLY</button>
                         </a>
                     </div>
 
@@ -513,17 +488,11 @@
                     </ul>
 
                     <div class="grid grid-cols-2">
-                        <a href="#" class="flex items-center p-3 text-sm font-medium text-red-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 text-gray-900 dark:text-red-500 hover:underline">
-                            <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z" />
-                            </svg>
-                            CLEAR ALL
+                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
+                            <p class="hover:animate-pulse">CLEAR ALL</p>
                         </a>
-                        <a href="#" class="flex items-center p-3 text-sm font-medium text-red-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 text-gray-900 dark:text-red-500 hover:underline">
-                            <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z" />
-                            </svg>
-                            APPLY
+                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
+                            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">APPLY</button>
                         </a>
                     </div>
 
@@ -544,61 +513,44 @@
                         <li>
                             <div class="flex items-center p-2 rounded text-gray-900">
                                 <input id="checkbox-item-11" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-11" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">G</label>
+                                <label for="checkbox-item-11" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">1</label>
                             </div>
                         </li>
                         <li>
                             <div class="flex items-center p-2 rounded text-gray-900">
                                 <input checked id="checkbox-item-12" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-12" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">PG</label>
+                                <label for="checkbox-item-12" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">2</label>
                             </div>
                         </li>
                         <li>
                             <div class="flex items-center p-2 rounded text-gray-900">
                                 <input id="checkbox-item-13" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-13" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">PG-13</label>
+                                <label for="checkbox-item-13" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">3</label>
                             </div>
                         </li>
                         <li>
                             <div class="flex items-center p-2 rounded text-gray-900">
                                 <input id="checkbox-item-14" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-14" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">R</label>
+                                <label for="checkbox-item-14" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">4</label>
                             </div>
                         </li>
                         <li>
                             <div class="flex items-center p-2 rounded text-gray-900">
                                 <input id="checkbox-item-15" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-15" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">NC-17</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-16" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-16" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">NOT RATED</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-17" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-17" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">UNRATED</label>
+                                <label for="checkbox-item-15" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">5</label>
                             </div>
                         </li>
                     </ul>
 
                     <div class="grid grid-cols-2">
-                        <a href="#" class="flex items-center p-3 text-sm font-medium text-red-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 text-gray-900 dark:text-red-500 hover:underline">
-                            <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z" />
-                            </svg>
-                            CLEAR ALL
+                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
+                            <p class="hover:animate-pulse">CLEAR ALL</p>
                         </a>
-                        <a href="#" class="flex items-center p-3 text-sm font-medium text-red-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 text-gray-900 dark:text-red-500 hover:underline">
-                            <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z" />
-                            </svg>
-                            APPLY
+                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
+                            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">APPLY</button>
                         </a>
                     </div>
+
                 </div>
             </div>
 
@@ -606,21 +558,16 @@
             <div class="flex justify-center items-center">
                 <button class="w-full text-center text-white flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium bg-red-500 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     RESET FILTERS
-                    <!-- <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                    </svg> -->
                 </button>
             </div>
 
-            <!--  -->
+            <!-- Search Bar -->
             <div class="flex justify-center items-center w-[30rem]">
                 <form class="flex items-center flex-1">
                     <label for="simple-search" class="sr-only">Search</label>
                     <div class="relative w-full">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2" />
-                            </svg>
+                            <i class='bx bx-film'></i>
                         </div>
                         <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="What movie are you looking for?" required>
                     </div>
@@ -632,66 +579,37 @@
                     </button>
                 </form>
             </div>
-
-            <!-- <div class="flex justify-center items-center">
-                <form class="flex items-center">   
-                    <label for="simple-search" class="sr-only">Search</label>
-                    <div class="relative w-full">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"/>
-                            </svg>
-                        </div>
-                        <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="What movie are you looking for?" required>
-                    </div>
-                    <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg>
-                        <span class="sr-only">Search</span>
-                    </button>
-                </form>
-            </div> -->
         </div>
 
         <div class="grid grid-cols-6 gap-4 max-[1200px]:grid-cols-2 max-[600px]:grid-cols-1 w-full z-1 border-b-4 border-white py-8 border-dotted">
+            
             <!-- Movie Card 1 -->
             <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow group">
-                <!-- <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow group"> -->
-
-                <!-- <div class="relative overflow-hidden"> -->
+                
                 <!-- Movie Poster -->
-                <a href="#" class="">
-                    <div class="relative w-full">
-                        <img class=" p-3 rounded-t-lg relative z-0 group-hover:blur-sm duration-100" src="./img/posters/parasite.jpg" alt="Movie Poster" class="" />
+                <div class="relative w-full">
+                    <img class=" p-3 rounded-t-lg relative z-0 group-hover:blur-sm duration-100" src="./img/posters/parasite.jpg" alt="Movie Poster"/>
 
-                        <div class="absolute w-full p-3 py-5 flex flex-col gap-y-2 justify-evenly duration-300 bottom-1 opacity-0 group-hover:bottom-[40%] group-hover:opacity-100">
-                            <!-- Redirect to Detailed Info of Movie -->
-                            <button onclick="window.location.href='admin_movie.php'" class="bg-gray-900 text-white p-2.5 hover:bg-gray-700">See Reviews</button>
-                            <!-- <button class="bg-gray-900 text-white p-2.5 hover:bg-gray-700">Edit Info</button> -->
-                        </div>
-
+                    <div class="absolute w-full p-3 py-5 flex flex-col gap-y-2 items-center justify-evenly duration-300 bottom-1 opacity-0 group-hover:bottom-[35%] group-hover:opacity-100">
+                        <!-- Redirect to Detailed Info of Movie -->
+                        <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center mr-2"><i class='bx bx-edit bx-md'></i></button>
                     </div>
-
-                    <div class="px-2 pb-4">
-                        <!-- Movie Title -->
-                        <a href="#">
-                            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Parasite (2019)</h5>
-                        </a>
-                    </div>
-                </a>
+                </div>
+                
+                <!-- Movie Title -->
+                <div class="px-2 pb-4">
+                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Parasite (2019)</h5>
+                </div>
 
             </div>
 
             <!-- Movie Card 2 -->
             <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <!-- Movie Poster -->
                 <a href="#">
                     <img class="p-3 rounded-t-lg" src="./img/posters/eeaao.jpg" alt="Movie Poster" />
                 </a>
 
                 <div class="px-2 pb-4">
-                    <!-- Movie Title -->
                     <a href="#">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Everything Everywhere All At Once (2022)</h5>
                     </a>
@@ -700,13 +618,11 @@
 
             <!-- Movie Card 3 -->
             <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <!-- Movie Poster -->
                 <a href="#">
                     <img class="p-3 rounded-t-lg" src="./img/posters/barbie2023.jpg" alt="Movie Poster" />
                 </a>
 
                 <div class="px-2 pb-4">
-                    <!-- Movie Title -->
                     <a href="#">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Barbie (2023)</h5>
                     </a>
@@ -715,13 +631,11 @@
 
             <!-- Movie Card 4 -->
             <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <!-- Movie Poster -->
                 <a href="#">
                     <img class="p-3 rounded-t-lg" src="./img/posters/fight-club.jpg" alt="Movie Poster" />
                 </a>
 
                 <div class="px-2 pb-4">
-                    <!-- Movie Title -->
                     <a href="#">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Fight Club (1999)</h5>
                     </a>
@@ -730,13 +644,11 @@
 
             <!-- Movie Card 5 -->
             <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <!-- Movie Poster -->
                 <a href="#">
                     <img class="p-3 rounded-t-lg" src="./img/posters/joker.jpg" alt="Movie Poster" />
                 </a>
 
                 <div class="px-2 pb-4">
-                    <!-- Movie Title -->
                     <a href="#">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Joker (2019)</h5>
                     </a>
@@ -745,13 +657,11 @@
 
             <!-- Movie Card 6 -->
             <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <!-- Movie Poster -->
                 <a href="#">
                     <img class="p-3 rounded-t-lg" src="./img/posters/spider-man-itsv.jpg" alt="Movie Poster" />
                 </a>
 
                 <div class="px-2 pb-4">
-                    <!-- Movie Title -->
                     <a href="#">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Spider-Man: Into The Spider-Verse (2018)</h5>
                     </a>
@@ -760,13 +670,11 @@
 
             <!-- Movie Card 7 -->
             <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <!-- Movie Poster -->
                 <a href="#">
                     <img class="p-3 rounded-t-lg" src="./img/posters/knives-out.jpg" alt="Movie Poster" />
                 </a>
 
                 <div class="px-2 pb-4">
-                    <!-- Movie Title -->
                     <a href="#">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Knives Out (2019)</h5>
                     </a>

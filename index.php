@@ -127,6 +127,7 @@
 <body>
     <!-- <?php include 'config/loader.php'; ?> -->
 
+    <!-- BURGER MENU -->
     <div class="absolute left-[-3000px] z-10 h-full w-full duration-500 ease-in-out flex flex-col items-center" id='sidebar'>
         <div class="w-full flex justify-end border-b-4 border-b-white px-10 pt-4 ">
             <img src="img/RottenPopCorn(Text).png" alt="Rotten Popcorn" class="h-20 hover:scale-110 duration-300">
@@ -179,6 +180,8 @@
             </div>
         </div>
     </div>
+
+    <!-- BURGER BUTTON -->
     <label class="buttons__burger hidden max-[600px]:block absolute z-20 top-[30px] left-8 duration-500" for="burger">
         <input type="checkbox" id="burger">
         <span></span>
@@ -186,6 +189,7 @@
         <span></span>
     </label>
 
+    <!-- NAVBAR -->
     <nav class="w-full py-1 px-8 flex flex-row items-center justify-between max-[600px]:justify-end relative">
 
 
@@ -258,9 +262,9 @@
                 <div id="animation-carousel" class="relative w-full" data-carousel="slide">
                     <!-- Carousel wrapper -->
                     <h1 class="text-white font-bold text-xl uppercase">Featured Movies</h1>
-                    <a href="">
-                        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                            <!-- Item 1 -->
+                    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                        <!-- Item 1 -->
+                        <a href="movie_info.php">
                             <div class="hidden duration-200 ease-linear group cursor-pointer" data-carousel-item data-carousel-item="active">
                                 <img src="https://ychef.files.bbci.co.uk/976x549/p04dgkm4.jpg" class="absolute block w-full group-hover:scale-75 duration-300 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                                 <div class="absolute bg-[#ff1621bb] shadow-lg px-10 py-4 -bottom-[45%] max-[600px]:-bottom-[70%] group-hover:bottom-0 duration-300 w-full flex flex-col gap-y-4">
@@ -302,176 +306,176 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Item 2 -->
-                            <div class="hidden duration-200 ease-linear group cursor-pointer" data-carousel-item>
-                                <img src="https://i.ytimg.com/vi/fzFHMhsTdf0/maxresdefault.jpg" class="absolute group-hover:scale-75 duration-300 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                <div class="absolute bg-[#ff1621bb] shadow-lg px-10 py-4 -bottom-[45%] max-[600px]:-bottom-[70%] group-hover:bottom-0 duration-300 w-full flex flex-col gap-y-4">
-                                    <div class="flex flex-row max-[600px]:flex-col border-b-2 border-b-white justify-between items-center">
-                                        <h1 class="text-white font-bold text-3xl max-[600px]:text-lg pb-2 uppercase opacity-100">BORAT 2</h1>
-                                        <div class="pb-2 text-lg text-white font-semibold uppercase flex flex-row items-center gap-3">
-                                            <img src="img/popcorn.png" class="w-7"> </img>
-                                            <span class="">100% Rotten Popcorn</span>
-                                        </div>
-                                    </div>
-                                    <div class="tags max-[600px]:hidden flex flex-row w-full gap-4 items-center">
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Comedy
-                                        </span>
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Documentary
-                                        </span>
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Jumpscare
-                                        </span>
-                                    </div>
-                                    <div class="flex flex-row flex-wrap w-full gap-x-8 justify-between max-[600px]:hidden">
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Director:</h1>
-                                            <span>Larry Charles</span>
-                                        </div>
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Writers:</h1>
-                                            <span>Sacha Baron, Cohen Anthony Hines, Peter Baynham</span>
-                                        </div>
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Cast:</h1>
-                                            <span>Sacha Baron Cohen as Borat</span>
-                                        </div>
-                                    </div>
-                                    <div class="w-full text-md text-white flex flex-col">
-                                        <h1 class="font-semibold uppercase">Synopsis:</h1>
-                                        <p>Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson.</p>
+                        </a>
+                        <!-- Item 2 -->
+                        <div class="hidden duration-200 ease-linear group cursor-pointer" data-carousel-item>
+                            <img src="https://i.ytimg.com/vi/fzFHMhsTdf0/maxresdefault.jpg" class="absolute group-hover:scale-75 duration-300 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            <div class="absolute bg-[#ff1621bb] shadow-lg px-10 py-4 -bottom-[45%] max-[600px]:-bottom-[70%] group-hover:bottom-0 duration-300 w-full flex flex-col gap-y-4">
+                                <div class="flex flex-row max-[600px]:flex-col border-b-2 border-b-white justify-between items-center">
+                                    <h1 class="text-white font-bold text-3xl max-[600px]:text-lg pb-2 uppercase opacity-100">BORAT 2</h1>
+                                    <div class="pb-2 text-lg text-white font-semibold uppercase flex flex-row items-center gap-3">
+                                        <img src="img/popcorn.png" class="w-7"> </img>
+                                        <span class="">100% Rotten Popcorn</span>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Item 3 -->
-                            <div class="hidden duration-200 ease-linear group cursor-pointer" data-carousel-item>
-                                <img src="https://www.un.org/sites/un2.un.org/files/field/image/dictator_quad-1024x768.jpg" class="absolute group-hover:scale-75 duration-300 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                <div class="absolute bg-[#ff1621bb] shadow-lg px-10 py-4 -bottom-[45%] max-[600px]:-bottom-[70%] group-hover:bottom-0 duration-300 w-full flex flex-col gap-y-4">
-                                    <div class="flex flex-row max-[600px]:flex-col border-b-2 border-b-white justify-between items-center">
-                                        <h1 class="text-white font-bold text-3xl max-[600px]:text-lg pb-2 uppercase opacity-100">The Dicktator</h1>
-                                        <div class="pb-2 text-lg text-white font-semibold uppercase flex flex-row items-center gap-3">
-                                            <img src="img/popcorn.png" class="w-7"> </img>
-                                            <span class="">100% Rotten Popcorn</span>
-                                        </div>
+                                <div class="tags max-[600px]:hidden flex flex-row w-full gap-4 items-center">
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Comedy
+                                    </span>
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Documentary
+                                    </span>
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Jumpscare
+                                    </span>
+                                </div>
+                                <div class="flex flex-row flex-wrap w-full gap-x-8 justify-between max-[600px]:hidden">
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Director:</h1>
+                                        <span>Larry Charles</span>
                                     </div>
-                                    <div class="tags max-[600px]:hidden flex flex-row w-full gap-4 items-center">
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Comedy
-                                        </span>
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Documentary
-                                        </span>
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Political
-                                        </span>
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Writers:</h1>
+                                        <span>Sacha Baron, Cohen Anthony Hines, Peter Baynham</span>
                                     </div>
-                                    <div class="flex flex-row flex-wrap w-full gap-x-8 justify-between max-[600px]:hidden">
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Director:</h1>
-                                            <span>Larry Charles</span>
-                                        </div>
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Writers:</h1>
-                                            <span>Sacha Baron, Cohen Anthony Hines, Peter Baynham</span>
-                                        </div>
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Cast:</h1>
-                                            <span>Sacha Baron Cohen as Borat</span>
-                                        </div>
-                                    </div>
-                                    <div class="w-full text-md text-white flex flex-col">
-                                        <h1 class="font-semibold uppercase">Synopsis:</h1>
-                                        <p>Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson.</p>
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Cast:</h1>
+                                        <span>Sacha Baron Cohen as Borat</span>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Item 4 -->
-                            <div class="hidden duration-200 ease-linear group cursor-pointer" data-carousel-item>
-                                <img src="https://scontent.fmnl32-1.fna.fbcdn.net/v/t39.30808-6/394205406_306160085613365_9046891007176085910_n.jpg?stp=dst-jpg_p600x600&_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFxf_sokR6xTsRLAWymo5RUPyngKnmDXzo_KeAqeYNfOsaT_33pX0C-1WeruybEHhsGCA-KBXBe-xk7i5tma8wP&_nc_ohc=Vs58vrsCPNAAX8O-pVn&_nc_ht=scontent.fmnl32-1.fna&oh=00_AfCWWOuZwMwDTPMDDVwDKv6d1JFr0yQC8CDdzYiFY0e2Gw&oe=654374E0" class="absolute group-hover:scale-75 duration-300 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                <div class="absolute bg-[#ff1621bb] shadow-lg px-10 py-4 -bottom-[45%] max-[600px]:-bottom-[70%] group-hover:bottom-0 duration-300 w-full flex flex-col gap-y-4">
-                                    <div class="flex flex-row max-[600px]:flex-col border-b-2 border-b-white justify-between items-center">
-                                        <h1 class="text-white font-bold text-3xl max-[600px]:text-lg pb-2 uppercase opacity-100">The Holocaust</h1>
-                                        <div class="pb-2 text-lg text-white font-semibold uppercase flex flex-row items-center gap-3">
-                                            <img src="img/popcorn.png" class="w-7"> </img>
-                                            <span class="">100% Rotten Popcorn</span>
-                                        </div>
-                                    </div>
-                                    <div class="tags max-[600px]:hidden flex flex-row w-full gap-4 items-center">
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Action
-                                        </span>
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Kids
-                                        </span>
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Educational
-                                        </span>
-                                    </div>
-                                    <div class="flex flex-row flex-wrap w-full gap-x-8 justify-between max-[600px]:hidden">
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Director:</h1>
-                                            <span>Larry Charles</span>
-                                        </div>
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Writers:</h1>
-                                            <span>Sacha Baron, Cohen Anthony Hines, Peter Baynham</span>
-                                        </div>
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Cast:</h1>
-                                            <span>Sacha Baron Cohen as Borat</span>
-                                        </div>
-                                    </div>
-                                    <div class="w-full text-md text-white flex flex-col">
-                                        <h1 class="font-semibold uppercase">Synopsis:</h1>
-                                        <p>Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 5 -->
-                            <div class="hidden duration-200 ease-linear group cursor-pointer" data-carousel-item>
-                                <img src="https://scontent.fmnl32-1.fna.fbcdn.net/v/t39.30808-6/392890870_306161958946511_1010502907836114553_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGCUYjcdkmyNJr777T2d433wXnfPiWVOrDBed8-JZU6sFGlOK0TkSvhe20xYnzfA267q0Voekt7aLGRuexjf3qF&_nc_ohc=jVxHWytTffMAX8vc7h_&_nc_ht=scontent.fmnl32-1.fna&oh=00_AfAgOClxDG6-RYUz67GKpOOV2qPoCL4ZdxvuK_fjWzu4MQ&oe=65422D4D" class="absolute group-hover:scale-75 duration-300 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                <div class="absolute bg-[#ff1621bb] shadow-lg px-10 py-4 -bottom-[45%] max-[600px]:-bottom-[70%] group-hover:bottom-0 duration-300 w-full flex flex-col gap-y-4">
-                                    <div class="flex flex-row max-[600px]:flex-col border-b-2 border-b-white justify-between items-center">
-                                        <h1 class="text-white font-bold text-3xl max-[600px]:text-lg pb-2 uppercase opacity-100">The Shooting</h1>
-                                        <div class="pb-2 text-lg text-white font-semibold uppercase flex flex-row items-center gap-3">
-                                            <img src="img/popcorn.png" class="w-7"> </img>
-                                            <span class="">100% Rotten Popcorn</span>
-                                        </div>
-                                    </div>
-                                    <div class="tags max-[600px]:hidden flex flex-row w-full gap-4 items-center">
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Drama
-                                        </span>
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Political
-                                        </span>
-                                        <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
-                                            Action
-                                        </span>
-                                    </div>
-                                    <div class="flex flex-row flex-wrap w-full gap-x-8 justify-between max-[600px]:hidden">
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Director:</h1>
-                                            <span>Larry Charles</span>
-                                        </div>
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Writers:</h1>
-                                            <span>Sacha Baron, Cohen Anthony Hines, Peter Baynham</span>
-                                        </div>
-                                        <div class="text-md text-white flex flex-row gap-2">
-                                            <h1 class="font-semibold uppercase">Cast:</h1>
-                                            <span>Sacha Baron Cohen as Borat</span>
-                                        </div>
-                                    </div>
-                                    <div class="w-full text-md text-white flex flex-col">
-                                        <h1 class="font-semibold uppercase">Synopsis:</h1>
-                                        <p>Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson.</p>
-                                    </div>
+                                <div class="w-full text-md text-white flex flex-col">
+                                    <h1 class="font-semibold uppercase">Synopsis:</h1>
+                                    <p>Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson.</p>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                        <!-- Item 3 -->
+                        <div class="hidden duration-200 ease-linear group cursor-pointer" data-carousel-item>
+                            <img src="https://www.un.org/sites/un2.un.org/files/field/image/dictator_quad-1024x768.jpg" class="absolute group-hover:scale-75 duration-300 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            <div class="absolute bg-[#ff1621bb] shadow-lg px-10 py-4 -bottom-[45%] max-[600px]:-bottom-[70%] group-hover:bottom-0 duration-300 w-full flex flex-col gap-y-4">
+                                <div class="flex flex-row max-[600px]:flex-col border-b-2 border-b-white justify-between items-center">
+                                    <h1 class="text-white font-bold text-3xl max-[600px]:text-lg pb-2 uppercase opacity-100">The Dicktator</h1>
+                                    <div class="pb-2 text-lg text-white font-semibold uppercase flex flex-row items-center gap-3">
+                                        <img src="img/popcorn.png" class="w-7"> </img>
+                                        <span class="">100% Rotten Popcorn</span>
+                                    </div>
+                                </div>
+                                <div class="tags max-[600px]:hidden flex flex-row w-full gap-4 items-center">
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Comedy
+                                    </span>
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Documentary
+                                    </span>
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Political
+                                    </span>
+                                </div>
+                                <div class="flex flex-row flex-wrap w-full gap-x-8 justify-between max-[600px]:hidden">
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Director:</h1>
+                                        <span>Larry Charles</span>
+                                    </div>
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Writers:</h1>
+                                        <span>Sacha Baron, Cohen Anthony Hines, Peter Baynham</span>
+                                    </div>
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Cast:</h1>
+                                        <span>Sacha Baron Cohen as Borat</span>
+                                    </div>
+                                </div>
+                                <div class="w-full text-md text-white flex flex-col">
+                                    <h1 class="font-semibold uppercase">Synopsis:</h1>
+                                    <p>Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="hidden duration-200 ease-linear group cursor-pointer" data-carousel-item>
+                            <img src="https://scontent.fmnl32-1.fna.fbcdn.net/v/t39.30808-6/394205406_306160085613365_9046891007176085910_n.jpg?stp=dst-jpg_p600x600&_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFxf_sokR6xTsRLAWymo5RUPyngKnmDXzo_KeAqeYNfOsaT_33pX0C-1WeruybEHhsGCA-KBXBe-xk7i5tma8wP&_nc_ohc=Vs58vrsCPNAAX8O-pVn&_nc_ht=scontent.fmnl32-1.fna&oh=00_AfCWWOuZwMwDTPMDDVwDKv6d1JFr0yQC8CDdzYiFY0e2Gw&oe=654374E0" class="absolute group-hover:scale-75 duration-300 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            <div class="absolute bg-[#ff1621bb] shadow-lg px-10 py-4 -bottom-[45%] max-[600px]:-bottom-[70%] group-hover:bottom-0 duration-300 w-full flex flex-col gap-y-4">
+                                <div class="flex flex-row max-[600px]:flex-col border-b-2 border-b-white justify-between items-center">
+                                    <h1 class="text-white font-bold text-3xl max-[600px]:text-lg pb-2 uppercase opacity-100">The Holocaust</h1>
+                                    <div class="pb-2 text-lg text-white font-semibold uppercase flex flex-row items-center gap-3">
+                                        <img src="img/popcorn.png" class="w-7"> </img>
+                                        <span class="">100% Rotten Popcorn</span>
+                                    </div>
+                                </div>
+                                <div class="tags max-[600px]:hidden flex flex-row w-full gap-4 items-center">
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Action
+                                    </span>
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Kids
+                                    </span>
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Educational
+                                    </span>
+                                </div>
+                                <div class="flex flex-row flex-wrap w-full gap-x-8 justify-between max-[600px]:hidden">
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Director:</h1>
+                                        <span>Larry Charles</span>
+                                    </div>
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Writers:</h1>
+                                        <span>Sacha Baron, Cohen Anthony Hines, Peter Baynham</span>
+                                    </div>
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Cast:</h1>
+                                        <span>Sacha Baron Cohen as Borat</span>
+                                    </div>
+                                </div>
+                                <div class="w-full text-md text-white flex flex-col">
+                                    <h1 class="font-semibold uppercase">Synopsis:</h1>
+                                    <p>Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item 5 -->
+                        <div class="hidden duration-200 ease-linear group cursor-pointer" data-carousel-item>
+                            <img src="https://scontent.fmnl32-1.fna.fbcdn.net/v/t39.30808-6/392890870_306161958946511_1010502907836114553_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGCUYjcdkmyNJr777T2d433wXnfPiWVOrDBed8-JZU6sFGlOK0TkSvhe20xYnzfA267q0Voekt7aLGRuexjf3qF&_nc_ohc=jVxHWytTffMAX8vc7h_&_nc_ht=scontent.fmnl32-1.fna&oh=00_AfAgOClxDG6-RYUz67GKpOOV2qPoCL4ZdxvuK_fjWzu4MQ&oe=65422D4D" class="absolute group-hover:scale-75 duration-300 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            <div class="absolute bg-[#ff1621bb] shadow-lg px-10 py-4 -bottom-[45%] max-[600px]:-bottom-[70%] group-hover:bottom-0 duration-300 w-full flex flex-col gap-y-4">
+                                <div class="flex flex-row max-[600px]:flex-col border-b-2 border-b-white justify-between items-center">
+                                    <h1 class="text-white font-bold text-3xl max-[600px]:text-lg pb-2 uppercase opacity-100">The Shooting</h1>
+                                    <div class="pb-2 text-lg text-white font-semibold uppercase flex flex-row items-center gap-3">
+                                        <img src="img/popcorn.png" class="w-7"> </img>
+                                        <span class="">100% Rotten Popcorn</span>
+                                    </div>
+                                </div>
+                                <div class="tags max-[600px]:hidden flex flex-row w-full gap-4 items-center">
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Drama
+                                    </span>
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Political
+                                    </span>
+                                    <span class="bg-white text-red-900 font-semibold text-md px-2 py-1 rounded-lg hover:bg-red-900 hover:text-white duration-300 cursor-pointer">
+                                        Action
+                                    </span>
+                                </div>
+                                <div class="flex flex-row flex-wrap w-full gap-x-8 justify-between max-[600px]:hidden">
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Director:</h1>
+                                        <span>Larry Charles</span>
+                                    </div>
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Writers:</h1>
+                                        <span>Sacha Baron, Cohen Anthony Hines, Peter Baynham</span>
+                                    </div>
+                                    <div class="text-md text-white flex flex-row gap-2">
+                                        <h1 class="font-semibold uppercase">Cast:</h1>
+                                        <span>Sacha Baron Cohen as Borat</span>
+                                    </div>
+                                </div>
+                                <div class="w-full text-md text-white flex flex-col">
+                                    <h1 class="font-semibold uppercase">Synopsis:</h1>
+                                    <p>Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Slider controls -->
                     <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
                         <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -824,48 +828,49 @@
                             More Info!
                         </button>
                     </div>
-                </div><div class="w-full">
-                <div class="group relative flex w-full max-w-[30rem] flex-col rounded-xl bg-white group-hover:bg-gray-300 bg-clip-border text-gray-700 shadow-lg cursor-pointer">
-                    <div class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-                        <img src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80" alt="ui/ux review check" class="group-hover:scale-110 duration-300" />
-                        <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
-                        <button id="heartBtn" class="!absolute top-4 right-4 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-red-500 transition-all hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" data-ripple-dark="true">
-                            <span id="emptyHeart" class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="white" d="m12.1 18.55l-.1.1l-.11-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05M16.5 3c-1.74 0-3.41.81-4.5 2.08C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.41 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z" />
-                                </svg>
-                            </span>
-                            <span id="fillHeart" class="hidden absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="red" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35Z" />
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3 group-hover:text-red-600 duration-300">
-                            <h5 class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
-                                Wooden House, Florida
-                            </h5>
-                            <p class="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFFF00" stroke="#00000077" aria-hidden="true" class="-mt-0.5 h-5 w-5 text-yellow-700">
-                                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
-                                </svg>
-                                5.0
+                </div>
+                <div class="w-full">
+                    <div class="group relative flex w-full max-w-[30rem] flex-col rounded-xl bg-white group-hover:bg-gray-300 bg-clip-border text-gray-700 shadow-lg cursor-pointer">
+                        <div class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
+                            <img src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80" alt="ui/ux review check" class="group-hover:scale-110 duration-300" />
+                            <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
+                            <button id="heartBtn" class="!absolute top-4 right-4 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-red-500 transition-all hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" data-ripple-dark="true">
+                                <span id="emptyHeart" class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path fill="white" d="m12.1 18.55l-.1.1l-.11-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05M16.5 3c-1.74 0-3.41.81-4.5 2.08C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.41 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z" />
+                                    </svg>
+                                </span>
+                                <span id="fillHeart" class="hidden absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path fill="red" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35Z" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3 group-hover:text-red-600 duration-300">
+                                <h5 class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
+                                    Wooden House, Florida
+                                </h5>
+                                <p class="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFFF00" stroke="#00000077" aria-hidden="true" class="-mt-0.5 h-5 w-5 text-yellow-700">
+                                        <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    5.0
+                                </p>
+                            </div>
+                            <p class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
+                                Enter a freshly updated and thoughtfully furnished peaceful home
+                                surrounded by ancient trees, stone walls, and open meadows.
                             </p>
                         </div>
-                        <p class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
-                            Enter a freshly updated and thoughtfully furnished peaceful home
-                            surrounded by ancient trees, stone walls, and open meadows.
-                        </p>
-                    </div>
-                    <div class="p-6 pt-3">
-                        <button class="block w-full select-none rounded-lg bg-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none hover:scale-110 duration-300" type="button" data-ripple-light="true">
-                            More Info!
-                        </button>
+                        <div class="p-6 pt-3">
+                            <button class="block w-full select-none rounded-lg bg-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none hover:scale-110 duration-300" type="button" data-ripple-light="true">
+                                More Info!
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

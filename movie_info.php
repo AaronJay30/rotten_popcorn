@@ -309,10 +309,14 @@
                 </div>
 
                 <div class="flex flex-col mt-4 w-full ">
+
+                    <!-- Synopsis -->
                     <div class="synopsis flex flex-col gap-y-4 border-b-2 pb-8">
                         <h1 class="text-2xl font-semibold text-white">Synopsis</h1>
                         <p class="text-justify text-gray-400 font-medium text-lg" style="text-indent: 50px;">Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson. Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson. Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson. Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson. Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson. Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. With a documentary crew in tow, Borat becomes more interested in locating and marrying Pamela Anderson.</p>
                     </div>
+
+                    <!-- Person -->
                     <div class="flex flex-col border-b-2 pb-8">
                         <div class="director flex flex-row gap-x-4 items-center mt-4">
                             <h1 class="font-bold text-2xl text-white">Director: </h1>
@@ -324,23 +328,16 @@
                         </div>
 
                     </div>
+
+                    <!-- Leave a comment -->
                     <div class="flex flex-col mt-4 gap-y-4 border-b-2 pb-8">
                         <h1 class="text-2xl font-bold text-white">Leave a review</h1>
-                        <form>
+                        <!-- <form>
                             <label for="chat" class="sr-only">Your message</label>
-                            <div class="flex items-end px-3 py-2 rounded-lg bg-red-100/90">
+                            <div class="flex items-end px-3 py-2 rounded-lg">
                                 <img src="img/sample.webp" alt="Profile" class="w-12 h-10 rounded-full duration-200 mr-4">
-                                <button type="button" class="p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-200">
-                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.408 7.5h.01m-6.876 0h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM4.6 11a5.5 5.5 0 0 0 10.81 0H4.6Z" />
-                                    </svg>
-                                    <span class="sr-only">Add emoji</span>
-                                </button>
-                                <div class="flex flex-col w-full relative gap-y-4">
-                                    <div class="flex flex-col w-full">
-                                        <input type="email" id="helper-text" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5" placeholder="Subject">
-                                    </div>
-                                    <textarea id="chat" rows="1" class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-red-500 focus:border-red-500" placeholder="Your message..."></textarea>
+                                <div class="flex flex-col px-4 w-full relative gap-y-4">
+                                    <textarea id="chat" rows="1" class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-red-500 focus:border-red-500 font-medium" placeholder="Your message..."></textarea>
                                 </div>
                                 <button type="submit" class="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100">
                                     <svg class="w-5 h-5 rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
@@ -349,7 +346,9 @@
                                     <span class="sr-only">Send message</span>
                                 </button>
                             </div>
-                        </form>
+                        </form> -->
+
+                        <div class="w-full text-center text-xl text-white">To leave a comment, you are required to <a href="login.php" class="text-red-400 hover:underline">login</a> to your account. </div>
                     </div>
 
                     <div class="w-full mt-4 ">

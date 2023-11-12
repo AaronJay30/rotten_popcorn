@@ -157,7 +157,7 @@
         <div class="flex flex-col justify-between w-full h-full">
             <ul class="flex flex-col justify-center items-center text-white mt-10 w-full">
                 <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
-                    <a href="" class="flex flex-row w-full justify-center items-center gap-4">
+                    <a href="all_movie.php" class="flex flex-row w-full justify-center items-center gap-4">
                         <i class='bx bxs-movie'></i>
                         <h1>Movie</h1>
                     </a>
@@ -234,7 +234,7 @@
 
             <ul class="max-[600px]:hidden flex flex-row gap-8 items-center text-white">
                 <li class="text-lg font-normal hover:text-red-500 py-2.5">
-                    <a href="">
+                    <a href="all_movie.php">
                         <h1>Movie</h1>
                     </a>
                 </li>

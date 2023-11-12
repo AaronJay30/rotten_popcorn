@@ -46,6 +46,33 @@ class myDB
         $this->fetchSelect($result);
     }
 
+    public function selectJoin($table, $row = '*', $where = null)
+    {
+        $sql = "SELECT $row FROM $table INNER JOIN user on $table.userID = user.userID INNER JOIN movie on $table.movieID = movie.movieID WHERE $where";
+        $result = $this->mysql->query($sql);
+        $this->fetchSelect($result);
+    }
+
+    public function countMovieRatings($table, $movieID)
+    {
+        $ratingsCount = array();
+
+        $totalReviewCount = 0;
+
+        for ($rating = 1; $rating <= 5; $rating++) {
+            $sql = "SELECT COUNT(*) AS user_count FROM $table WHERE movieID = $movieID AND rating = $rating";
+            $result = $this->mysql->query($sql);
+            $row = $result->fetch_assoc();
+            $ratingsCount[$rating] = $row['user_count'];
+
+            $totalReviewCount += $row['user_count'];
+        }
+
+        $ratingsCount['total'] = $totalReviewCount;
+
+        $this->res = $ratingsCount;
+    }
+
     public function selectFeaturedMovie($table, $row = "*", $where = null, $count = 0, $random = true)
     {
         $orderClause = $random ? "RAND()" : "average_rating DESC";

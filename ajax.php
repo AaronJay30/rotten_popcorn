@@ -18,3 +18,14 @@ if (isset($_POST['getMovie'])) {
 
     echo json_encode($db->res);
 }
+
+if (isset($_POST['movieInfo'])) {
+    if (isset($_POST['showReview'])) {
+
+        $movieID = $_POST['movieID'];
+
+        $db->selectJoin('review', '*', " review.movieID = '$movieID'");
+    }
+
+    echo json_encode($db->res);
+}

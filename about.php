@@ -250,9 +250,11 @@
 
         <div class="flex flex-row flex-wrap justify-evenly items-center w-full border-y-2 py-8 gap-y-8">
             <div class="card group">
-                <div class="image"></div>
+                <div class="image">
+                    <img src="img/Arjay.png" alt="" srcset="" class="rounded-full">
+                </div>
                 <div class="card-info">
-                    <span class="group-hover:text-white duration-100">George Johnson</span>
+                    <span class="group-hover:text-white duration-100">Arjay Hagid</span>
                     <p class="group-hover:text-white duration-100">Support Specialist</p>
                 </div>
                 <a class="button group-hover:text-white" href="#">Folow</a>
@@ -265,9 +267,11 @@
 
             </div>
             <div class="card group">
-                <div class="image"></div>
+                <div class="image">
+                    <img src="img/jayne(2).png" alt="" class="rounded-full mt-4">
+                </div>
                 <div class="card-info">
-                    <span class="group-hover:text-white duration-100">George Johnson</span>
+                    <span class="group-hover:text-white duration-100">Jayne Vernice Ramos</span>
                     <p class="group-hover:text-white duration-100">Support Specialist</p>
                 </div>
                 <a class="button group-hover:text-white" href="#">Folow</a>
@@ -280,9 +284,11 @@
 
             </div>
             <div class="card group">
-                <div class="image"></div>
+                <div class="image">
+                    <img src="img/aaron.png" alt="" class="rounded-full">
+                </div>
                 <div class="card-info">
-                    <span class="group-hover:text-white duration-100">George Johnson</span>
+                    <span class="group-hover:text-white duration-100">Aaron Jay Gabato</span>
                     <p class="group-hover:text-white duration-100">Support Specialist</p>
                 </div>
                 <a class="button group-hover:text-white" href="#">Folow</a>
@@ -297,13 +303,7 @@
         </div>
 
         <div class="flex flex-col gap-y-4 w-full px-20 py-10">
-            <p class="text-md text-white w-full text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lorem magna, tempus eu eros a, mollis commodo odio. Morbi tincidunt lacinia tristique. Nam hendrerit vel lacus eget lobortis. Proin et risus sed magna imperdiet eleifend in vel metus. Ut malesuada pellentesque nunc a sodales. In egestas mi ac urna condimentum, sit amet iaculis dui dictum. Nam ipsum odio, pharetra nec odio pulvinar, interdum commodo eros. Fusce facilisis, tellus id mattis ornare, felis est interdum metus, ut ullamcorper nisl erat vel augue. In nisi lorem, gravida quis velit eget, porta pharetra dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
-
-            <p class="text-md text-white w-full text-justify">Nulla facilisi. Aliquam varius aliquet elit eget molestie. Fusce non molestie enim. Aliquam erat volutpat. Nulla ac orci ligula. Nulla tempor, felis nec egestas euismod, eros nibh condimentum nulla, nec consectetur augue magna a felis. Suspendisse pretium neque at ullamcorper vestibulum. Nam malesuada cursus enim vel sagittis. Nunc nisi orci, luctus sed leo eu, faucibus tristique lacus. Nunc et dignissim velit. Ut neque eros, molestie non molestie at, efficitur ut metus. Suspendisse odio nisi, pellentesque id molestie ac, blandit ut tortor. Nulla in ligula et felis feugiat vulputate. Duis sed volutpat mi. Nulla auctor ex odio. Mauris aliquam libero lacus, a condimentum orci tempor ut. </p>
-
-            <p class="text-md text-white w-full text-justify">Aliquam tincidunt orci at tellus tristique, et bibendum tellus iaculis. Sed convallis sem ac elit venenatis, sagittis sodales massa posuere. Etiam nulla tellus, bibendum vitae risus vitae, ullamcorper ultricies erat. In ac accumsan lectus, et laoreet quam. Nulla non purus et leo dictum laoreet quis sit amet nibh. Nunc at odio nec dui suscipit pulvinar. Ut justo enim, blandit id maximus eget, elementum a urna. In ut enim sed diam tempor fermentum. Praesent arcu ante, pellentesque quis est nec, auctor tincidunt ligula. </p>
-
-            <p class="text-md text-white w-full text-justify">Pellentesque sollicitudin libero nisl, a rhoncus sapien elementum non. Nam tristique est et pellentesque sollicitudin. Vestibulum mi eros, venenatis ac volutpat eu, congue efficitur lorem. Maecenas ac sapien tincidunt, facilisis nisi vitae, accumsan purus. Etiam accumsan, lacus vitae scelerisque elementum, felis purus gravida dui, in tempus quam turpis non turpis. Cras iaculis sed enim consectetur vestibulum. Aenean et mollis est, nec facilisis enim. Maecenas feugiat est vehicula consequat fermentum. Sed in sem porta quam gravida ullamcorper vel at dolor. Integer suscipit scelerisque leo sed maximus. Fusce efficitur eros mi, eget iaculis arcu rutrum et.</p>
+            <p class="text-xl text-white w-full text-justify">Welcome to RottenPopcorn, your go-to destination for the latest and most comprehensive movie reviews. At RottenPopcorn, we are passionate about all things cinema, and our dedicated team of film enthusiasts is committed to providing insightful and honest reviews that guide you through the diverse world of movies. Whether you're a casual moviegoer or a dedicated cinephile, our user-friendly website offers a curated selection of reviews spanning various genres, from blockbuster hits to indie gems. Navigate our site to discover expert critiques, ratings, and recommendations that will help you make informed decisions about your next movie night. Join our vibrant community, engage in discussions, and stay up-to-date with the latest film releases. RottenPopcorn is your trusted companion in exploring the magic of the silver screen.</p>
         </div>
 
 

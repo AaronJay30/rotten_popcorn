@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
-                <a href="" class="flex flex-row w-full justify-center items-center gap-4">
+                <a href="setting.php" class="flex flex-row w-full justify-center items-center gap-4">
                     <i class='bx bxs-cog'></i>
                     <h1>Settings</h1>
                 </a>
@@ -117,7 +117,7 @@
             </div>
 
             <div class="py-1">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white duration-300">Settings</a>
+                <a href="setting.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white duration-300">Settings</a>
             </div>
             <div class="py-1">
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white duration-300">Sign out</a>

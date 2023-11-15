@@ -188,14 +188,6 @@
                                     <label for="movie-summary" class="block mb-2 text-sm font-medium text-gray-900">Movie Summary</label>
                                     <input type="text" id="movie-summary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Summary" required>
                                 </div>
-                                <!-- <div>
-                                <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Website URL</label>
-                                <input type="url" id="website" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="flowbite.com" required>
-                            </div>
-                            <div>
-                                <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900">Unique visitors (per month)</label>
-                                <input type="number" id="visitors" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="" required>
-                            </div> -->
                             </div>
 
                             <div class="mb-6">

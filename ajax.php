@@ -19,6 +19,31 @@ if (isset($_POST['getMovie'])) {
     echo json_encode($db->res);
 }
 
+if (isset($_POST['adminGetMovie'])) {
+
+    $db->select('movie', '*', null);
+
+    echo json_encode($db->res);
+}
+
+if (isset($_POST['deleteReview'])) {
+    $reviewID = $_POST['reviewID'];
+    $where = ' reviewID =' . $reviewID;
+    $db->delete('review', $where);
+
+    echo json_encode($db->res);
+}
+
+if (isset($_POST['deleteMovie'])) {
+    $movieID = $_POST['movieID'];
+    $where = ' movieID =' . $movieID;
+    $db->delete('movie', $where);
+
+    echo json_encode($db->res);
+}
+
+
+
 if (isset($_POST['movieInfo'])) {
     if (isset($_POST['showReview'])) {
 
@@ -71,10 +96,7 @@ if (isset($_POST['registerUser'])) {
         $error = array('error' => 'Email already exists');
         echo json_encode($error);
         exit; // Stop execution if there's an error
-    }
-
-    else 
-    {
+    } else {
         $hashPassword = $postData['password'];
         $conHashPassword = $postData['confirm-password'];
 

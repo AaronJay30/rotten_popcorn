@@ -1,22 +1,72 @@
 <?php
+require "config/db.php";
 
-require "./config/db.php";
-$movieDB = new myDB();
+if (!isset($_COOKIE['userID'])) {
+    header('Location: index.php');
+}
 
-// if(!isset($_GET['id'])) {
-//     header("Location: index.php");
-// }
+if (isset($_POST['submit'])) {
+    $addMovieDB = new myDB();
 
-// $movieID = $_GET['id'];
+    $statusMsg = '';
 
-// $movieDB->select('movie', '*', " movieID = $movieID");
+    $targetDir = "img/posters/";
 
-// $movie = $movieDB->res;
+    $datas = array();
 
-// Fetch data from tbl movie
-$movieDB->select('movie', '*');
-// Get result set
-$movies = $movieDB->res;
+    if (!empty($_FILES["file"]["name"])) {
+        $fileName = basename($_FILES["file"]["name"]);
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+        // Allow certain file formats 
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+        if (in_array($fileType, $allowTypes)) {
+            // Upload file to server 
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
+                // Insert image file name into database 
+                $datas['poster'] = $fileName;
+            } else {
+                $statusMsg = "Sorry, there was an error uploading your file.";
+            }
+        } else {
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
+        }
+    } else {
+        $statusMsg = 'Please select a file to upload.';
+    }
+
+
+    $trimTitle = str_replace("'", "\'", $_POST['title']);
+    $datas['title'] = $trimTitle;
+
+    $trimDirector = str_replace("'", "\'", $_POST['director']);
+    $datas['director'] = $trimDirector;
+
+    $trimcast = str_replace("'", "\'", $_POST['cast']);
+    $datas['cast'] = $trimcast;
+
+    $trimyear = str_replace("'", "\'", $_POST['year']);
+    $datas['year'] = $trimyear;
+
+    $trimgenre = str_replace("'", "\'", $_POST['genre']);
+    $datas['genre'] = $trimgenre;
+
+    $trimSynopsis = str_replace("'", "\'", $_POST['synopsis']);
+
+    $datas['synopsis'] = $trimSynopsis;
+
+    print_r($datas);
+
+    $addMovieDB->insert('movie', $datas);
+
+    $result = $addMovieDB->res;
+
+    if ($result) {
+        $statusMsg = "Added Successfully";
+        header("Location: admin.php?message=" . $statusMsg);
+    }
+}
 
 ?>
 
@@ -32,6 +82,7 @@ $movies = $movieDB->res;
     <script src="js/tailwind.js"></script>
     <script src="js/jquery.3.7.1.js"></script>
     <script src="js/flowbite.js"></script>
+    <script src="js/sweetalert.js"></script>
 
     <!-- <link href="css/flowbite.css" rel="stylesheet" /> -->
     <link href='css/boxicons.min.css' rel='stylesheet'>
@@ -175,71 +226,48 @@ $movies = $movieDB->res;
                 <!-- Main modal -->
                 <dialog id="modal" class="p-5 backdrop:bg-black backdrop:opacity-80 rounded-2xl w-3/5  max-[1000px]:w-4/5  max-[600px]:w-full">
                     <div class="relative w-full p-10 grid grid-cols-3 max-[1000px]:grid-cols-1 items-center gap-x-8 max-h-full">
-                        <div class="flex items-center justify-center w-full col-span-1">
-                            <label for="poster" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
-                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                    </svg>
-                                    <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                </div>
-                                <input id="poster" type="file" class="hidden" />
+                        <div class="flex flex-col items-center justify-center w-full col-span-1">
+                            <img id="profileImage" class="w-full mx-auto rounded-2xl mb-4" src="img/RottenPopCorn(Logo).png" alt="Extra large avatar">
+
+                            <label for="profile" class="flex flex-col gap-y-4 justify-center items-center w-full">
+                                <h1 class="px-4 text-center py-2.5 rounded-xl bg-blue-700 cursor-pointer text-white hover:bg-blue-900 duration-200 w-full">Change Photo</h1>
                             </label>
+                            <input type="file" id="profile" name="file" class="hidden" form="addMovieForm">
+
+                            <hr class="mt-4">
                         </div>
 
                         <!-- Movie Details -->
-                        <form class="col-span-2">
+                        <form class="col-span-2" id="addMovieForm" action='admin.php' method="POST" enctype="multipart/form-data">
                             <div class="grid gap-6 mb-6 md:grid-cols-2">
                                 <div>
                                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Movie Title</label>
-                                    <input type="text" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Title" required>
+                                    <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Title" required>
                                 </div>
                                 <div>
                                     <label for="director" class="block mb-2 text-sm font-medium text-gray-900">Movie Director</label>
-                                    <input type="text" id="director" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Director" required>
+                                    <input type="text" id="director" name="director" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Director" required>
                                 </div>
                                 <div>
-                                    <label for="year" class="block mb-2 text-sm font-medium text-gray-900">Movie Release</label>
-                                    <input type="text" id="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Release" required>
+                                    <label for="Cast" class="block mb-2 text-sm font-medium text-gray-900">Movie Cast</label>
+                                    <input type="text" name="cast" id="Cast" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Cast" required>
                                 </div>
-                                <div class="col-span-1">
-                                    <label for="genre" class="block mb-2 text-sm font-medium text-gray-900">Edit Movie Genres</label>
-                                        <button id="genre" data-dropdown-toggle="dropdownGenre" class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-gray-50 border border-gray-300 rounded-lg" type="button">Choose Genres <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                                        </svg></button>
-
-                                        <!-- Dropdown menu -->
-                                        <div id="dropdownGenre" class="z-10 hidden rounded-lg shadow w-60 bg-gray-600 p-3">
-                                            <ul class="h-48 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
-                                                <li>
-                                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                    <input id="checkbox-item-11" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                    <label for="checkbox-item-11" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Action</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                        <input checked id="checkbox-item-12" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                        <label for="checkbox-item-12" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Comedy</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                    <input id="checkbox-item-13" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                    <label for="checkbox-item-13" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Romance</label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                <div>
+                                    <label for="year" class="block mb-2 text-sm font-medium text-gray-900">Movie Year Release</label>
+                                    <input type="text" id="year" name="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Release" required>
                                 </div>
-                                <div class="col-span-2">  
+                                <div>
+                                    <label for="genre" class="block mb-2 text-sm font-medium text-gray-900">Movie Genre</label>
+                                    <input type="text" id="genre" name="genre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Year Release" required>
+                                </div>
+                                <div class="col-span-2">
                                     <label for="synopsis" class="block mb-2 text-sm font-medium text-gray-900">Movie Synopsis</label>
                                     <div>
-                                        <textarea id="synopsis" rows="4" class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 focus:border-blue-500 resize-none" placeholder="Write a brief summary of the movie here..."></textarea>
+                                        <textarea id="synopsis" name="synopsis" rows="4" class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 focus:border-blue-500 resize-none" placeholder="Write a brief summary of the movie here..."></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+                            <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                             <button onclick="modal.close(modal)" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
                         </form>
                     </div>
@@ -393,15 +421,14 @@ $movies = $movieDB->res;
     </div>
 </body>
 <script>
-
     const modal = document.getElementById('modal');
     modal.addEventListener('click', (event) => {
-        if(event.target === modal) {
+        if (event.target === modal) {
             modal.close();
         }
     });
 
-    $(document).ready(function(){
+    $(document).ready(function() {
         loadMovies();
     });
 
@@ -410,8 +437,7 @@ $movies = $movieDB->res;
             url: "ajax.php",
             method: "POST",
             data: {
-                'getMovie': true,
-                "getAllMovies": true,
+                'adminGetMovie': true,
             },
             success: function(result) {
                 var datas = JSON.parse(result);
@@ -423,8 +449,8 @@ $movies = $movieDB->res;
                         <div class="relative w-full">
                             <img class="p-3 rounded-t-lg relative z-0 group-hover:blur-sm duration-100" src="./img/posters/` + data['poster'] + ` " alt="Movie Poster" />
                             <div class="absolute w-full py-5 flex flex-row gap-y-2 items-center justify-evenly duration-300 bottom-1 opacity-0 group-hover:bottom-[35%] group-hover:opacity-100">
-                                <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center"><i class='bx bx-edit bx-sm'></i></button>
-                                <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center"><i class='bx bx-trash bx-sm'></i></button>
+                                <button onclick="window.location.href='admin_movie.php?movieID=` + data['movieID'] + `'" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center"><i class='bx bx-edit bx-sm'></i></button>
+                                <button onclick="sweetAlertDelete(` + data['movieID'] + `)" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center"><i class='bx bx-trash bx-sm'></i></button>
                             </div>
                         </div>
                         <div class="px-2 pb-4">
@@ -442,5 +468,66 @@ $movies = $movieDB->res;
         })
     }
 
+    function sweetAlertDelete(id) {
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "py-2.5 px-4 bg-blue-500 text-white mx-1 rounded-lg",
+                cancelButton: "py-2.5 px-4 bg-red-500 text-white mx-1 rounded-lg"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+                deleteMovie(id);
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "Your imaginary file is safe :)",
+                    icon: "error"
+                });
+            }
+        });
+    }
+
+    function deleteMovie(movieID) {
+        // alert(reviewId);
+        $.ajax({
+            url: 'ajax.php',
+            method: 'POST',
+            data: {
+                'deleteMovie': true,
+                'movieID': movieID,
+            },
+            success: function(result) {
+                loadMovies();
+            },
+            error: function(error) {
+                console.log(error)
+            }
+        });
+
+    }
+
+    document.getElementById("profile").onchange = function() {
+        document.getElementById('profileImage').src = URL.createObjectURL(this.files[0]);
+    };
 </script>
+
 </html>

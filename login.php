@@ -1,3 +1,36 @@
+<?php
+
+require "config/db.php";
+$db = new myDB();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    if (empty($email) || empty($password)) {
+        // Display an error message
+        echo '<script>alert("Email and password are required.");</script>';
+    } else {
+
+        $db->select('user', '*', " email = '$email' ");
+
+        $result = $db->res;
+
+
+        if ($result && md5($password) == $result[0]['password']) {
+            session_start();
+
+            $_SESSION['userID'] = $result[0]['userID'];
+            header("Location: index.php");
+            exit();
+        } else {
+            echo '<script>alert("Invalid email or password.");</script>';
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,13 +70,31 @@
 <body>
 
 
+    <div class="absolute right-10 bottom-5">
+        <?php
+        // Check if the "message" parameter is present in the URL and has the value "success"
+        if (isset($_GET['message']) && $_GET['message'] === 'success') {
+            echo '
+                <div id="toast-interactive" class="w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-400" role="alert">
+                    <div class="flex">
+                        <div class="mx-3 text-sm font-normal">
+                            <span class="mb-1 text-lg text-gray-900 dark:text-white">Register account successfully</span>
+                        </div>
+                    </div>
+                </div>';
+        }
+        ?>
+    </div>
+
+
+
     <div class="flex flex-col min-h-screen justify-center items-center relative">
         <div class="bg-[#000000bb] py-20 px-20 flex flex-col justify-start items-center w-1/3 gap-y-4">
             <!-- <div class="w-full flex flex-row justify-center">
                 <img src="img/RottenPopCorn(Text).png" alt="Logo" class="w-[20rem]">
             </div> -->
             <h1 class="text-white w-full text-left font-bold text-5xl border-b-2 pb-4">Sign In</h1>
-            <form action="" class="w-full flex flex-col justify-start items-center gap-y-4">
+            <form action="login.php" method="POST" class="w-full flex flex-col justify-start items-center gap-y-4">
                 <div class="flex flex-col justify-start w-full mt-4 gap-y-1">
                     <label for="email" class="text-white font-medium text-xl">Email</label>
                     <input type="text" name="email" id="email" autocomplete="off" placeholder="sample@gmail.com" class="rounded-lg p-2.5 bg-gray-700 border border-gray-600 placeholder:text-gray-400 text-white focus:ring-red-900 focus:border-0">
@@ -53,7 +104,7 @@
                     <input type="password" name="password" id="password" autocomplete="off" placeholder="************" class="rounded-lg p-2.5 bg-gray-700 border border-gray-600 placeholder:text-gray-400 text-white focus:ring-red-900 focus:border-0">
                 </div>
 
-                <button class="bg-red-900 hover:bg-red-700 p-2.5 w-full mt-7 rounded-lg text-white text-xl font-medium">Sign in</button>
+                <button class="bg-red-900 hover:bg-red-700 p-2.5 w-full mt-7 rounded-lg text-white text-xl font-medium" type="submit" name="login">Sign in</button>
 
                 <div class="mt-4 flex items-center w-full justify-center">
                     <div class="border-t flex-1 mx-4"></div>
@@ -61,11 +112,8 @@
                     <div class="border-t flex-1 mx-4"></div>
                 </div>
 
-                <h2 class="text-center text-white text-xl hover:text-red-700 hover:underline duration-200"><a href="">Doesn't have an account?</a></h2>
+                <h2 class="text-center text-white text-xl hover:text-red-700 hover:underline duration-200"><a href="register.php">Doesn't have an account?</a></h2>
             </form>
-
-
-
         </div>
     </div>
 </body>
@@ -78,6 +126,16 @@
     window.addEventListener('focus', () => {
         document.title = "Rotten Popcorn";
     })
+</script>
+
+<script>
+    // Add JavaScript to hide the toast after 10 seconds
+    setTimeout(function() {
+        var toast = document.getElementById('toast-interactive');
+        if (toast) {
+            toast.style.display = 'none';
+        }
+    }, 3000); // 10 seconds in milliseconds
 </script>
 
 </html>

@@ -60,3 +60,26 @@ if (isset($_POST['allMovies'])) {
 
     echo json_encode($db->res);
 }
+
+if (isset($_POST['registerUser'])) {
+    $postData = $_POST['datas'];
+
+    $hashPassword = $postData['password'];
+    $conHashPassword = $postData['confirm-password'];
+
+    if ($hashPassword == $conHashPassword) {
+        $data = array(
+            'username' => $postData['username'],
+            'email' => $postData['email'],
+            'password' => md5($hashPassword),
+            'birthday' => $postData['birthday'],
+            'created_at' => date('Y-m-d'),
+        );
+
+        $db->insert('user', $data);
+        echo json_encode($db->res);
+    } else {
+        $error = array('error' => 'Passwords do not match');
+        echo json_encode($error);
+    }
+}

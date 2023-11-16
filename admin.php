@@ -153,9 +153,6 @@
                 <!-- Main modal -->
                 <dialog id="modal" class="p-5 backdrop:bg-black backdrop:opacity-80 rounded-2xl w-3/5  max-[1000px]:w-4/5  max-[600px]:w-full">
                     <div class="relative w-full p-10 grid grid-cols-3 max-[1000px]:grid-cols-1 items-center gap-x-8 max-h-full">
-
-                        <!-- Column 1 for Movie Poster Column 2 for Movie Info -->
-                        <!-- Movie Poster (size 27" x 40") -->
                         <div class="flex items-center justify-center w-full col-span-1">
                             <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
                                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -177,30 +174,60 @@
                                     <input type="text" id="movie-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Title" required>
                                 </div>
                                 <div>
-                                    <label for="movie-release" class="block mb-2 text-sm font-medium text-gray-900">Movie Release</label>
-                                    <input type="text" id="movie-release" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Release" required>
-                                </div>
-                                <div>
                                     <label for="movie-director" class="block mb-2 text-sm font-medium text-gray-900">Movie Director</label>
                                     <input type="text" id="movie-director" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Director" required>
                                 </div>
                                 <div>
-                                    <label for="movie-summary" class="block mb-2 text-sm font-medium text-gray-900">Movie Summary</label>
-                                    <input type="text" id="movie-summary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Summary" required>
+                                    <label for="movie-release" class="block mb-2 text-sm font-medium text-gray-900">Movie Release</label>
+                                    <input type="text" id="movie-release" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Release" required>
                                 </div>
-                            </div>
+                                <div>
+                                    <label for="movie_genre" class="block mb-2 text-sm font-medium text-gray-900">Edit Movie Genres</label>
+                                        <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-transparent border-0 border-b-2 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" type="button">Choose Genres <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                        </svg></button>
 
-                            <div class="mb-6">
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
-                                <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="john.doe@company.com" required>
-                            </div>
-                            <div class="mb-6">
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                                <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="•••••••••" required>
-                            </div>
-                            <div class="mb-6">
-                                <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                                <input type="password" id="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="•••••••••" required>
+                                        <!-- Dropdown menu -->
+                                        <div id="dropdownSearch" class="z-10 hidden rounded-lg shadow w-60 bg-gray-700">
+                                            <div class="p-3">
+                                                <label for="input-group-search" class="sr-only">Search</label>
+                                                <div class="relative">
+                                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                                    </svg>
+                                                    </div>
+                                                    <input type="text" id="input-group-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Genre">
+                                                </div>
+                                            </div>
+                                            <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+                                                <li>
+                                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                                    <input id="checkbox-item-11" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                    <label for="checkbox-item-11" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Action</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                                        <input checked id="checkbox-item-12" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                        <label for="checkbox-item-12" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Comedy</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                                    <input id="checkbox-item-13" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                    <label for="checkbox-item-13" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Romance</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                </div>
+                                <div>  
+                                    <label for="movie-synopsis" class="block mb-2 text-sm font-medium text-gray-900">Movie Synopsis</label>
+                                    <div>
+                                        <textarea id="movie-synopsis" rows="4" class="block p-2.5 w-full text-sm text-white bg-transparent rounded-lg border border-white focus:ring-blue-500 focus:border-blue-500 placeholder-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none" placeholder="Write your thoughts here..."></textarea>
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                             <button onclick="modal.close(modal)" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
@@ -321,128 +348,6 @@
                 </div>
             </div>
 
-            <!-- Dropdown 3 -->
-            <!-- <div class="flex justify-center items-center">
-                <button data-dropdown-toggle="dropdown-rating" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
-                    RATING
-                    <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-
-                <div id="dropdown-rating" class="z-10 hidden bg-white rounded-lg shadow w-1/5">
-                    <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700" aria-labelledby="dropdownSearchButton">
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-11" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-11" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">G</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input checked id="checkbox-item-12" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-12" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">PG</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-13" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-13" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">PG-13</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-14" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-14" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">R</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-15" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-15" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">NC-17</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-16" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-16" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">NOT RATED</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-17" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-17" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">UNRATED</label>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="grid grid-cols-2">
-                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
-                            <p class="hover:animate-pulse">CLEAR ALL</p>
-                        </a>
-                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
-                            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">APPLY</button>
-                        </a>
-                    </div>
-
-                </div>
-            </div> -->
-
-            <!-- Dropdown 4 -->
-            <!-- <div class="flex justify-center items-center">
-                <button data-dropdown-toggle="dropdown-score" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
-                    AUDIENCE SCORE
-                    <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-
-                <div id="dropdown-score" class="z-10 hidden bg-white rounded-lg shadow w-1/5">
-                    <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700" aria-labelledby="dropdownSearchButton">
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-11" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-11" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">1</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input checked id="checkbox-item-12" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-12" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">2</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-13" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-13" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">3</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-14" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-14" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">4</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex items-center p-2 rounded text-gray-900">
-                                <input id="checkbox-item-15" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
-                                <label for="checkbox-item-15" class="w-full ml-2 text-sm font-medium text-gray-900 rounded">5</label>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="grid grid-cols-2">
-                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
-                            <p class="hover:animate-pulse">CLEAR ALL</p>
-                        </a>
-                        <a href="#" class="flex items-center justify-center pt-2 text-sm font-medium text-red-600 border-t border-gray-600 rounded-b-lg bg-gray-50">
-                            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">APPLY</button>
-                        </a>
-                    </div>
-
-                </div>
-            </div> -->
-
             <!-- Dropdown 5 -->
             <div class="flex justify-center items-center">
                 <button class="w-full text-center text-white flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium bg-red-500 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
@@ -479,9 +384,10 @@
                 <div class="relative w-full">
                     <img class=" p-3 rounded-t-lg relative z-0 group-hover:blur-sm duration-100" src="./img/posters/parasite.jpg" alt="Movie Poster" />
 
-                    <div class="absolute w-full p-3 py-5 flex flex-col gap-y-2 items-center justify-evenly duration-300 bottom-1 opacity-0 group-hover:bottom-[35%] group-hover:opacity-100">
+                    <div class="absolute w-full py-5 flex flex-row gap-y-2 items-center justify-evenly duration-300 bottom-1 opacity-0 group-hover:bottom-[35%] group-hover:opacity-100">
                         <!-- Redirect to Detailed Info of Movie -->
-                        <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center mr-2"><i class='bx bx-edit bx-md'></i></button>
+                        <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center mr-2"><i class='bx bx-edit bx-sm'></i></button>
+                        <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center mr-2"><i class='bx bx-trash bx-sm'></i></button>
                     </div>
                 </div>
 

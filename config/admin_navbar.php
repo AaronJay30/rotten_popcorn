@@ -8,32 +8,13 @@
         <div class="flex flex-col justify-between w-full h-full">
             <ul class="flex flex-col justify-center items-center text-white mt-10 w-full">
                 <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
-                    <a href="" class="flex flex-row w-full justify-center items-center gap-4">
-                        <i class='bx bxs-movie'></i>
-                        <h1>Movie</h1>
-                    </a>
-                </li>
-                <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
-                    <a href="" class="flex flex-row w-full justify-center items-center gap-4">
-                        <i class='bx bxs-user'></i>
-                        <h1>About</h1>
-                    </a>
-                </li>
-                <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
-                    <a href="" class="flex flex-row w-full justify-center items-center gap-4">
-                        <i class='bx bxs-contact'></i>
-                        <h1>Contacts</h1>
-                    </a>
-                </li>
-                <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
-                    <a href="" class="flex flex-row w-full justify-center items-center gap-4">
-                        <i class='bx bxs-cog'></i>
+                    <a href="" class="">
                         <h1>Settings</h1>
                     </a>
                 </li>
                 <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
                     <a href="" class="">
-                        <h1>Sign in</h1>
+                        <h1>Log Out</h1>
                     </a>
                 </li>
 
@@ -66,24 +47,6 @@
         </a>
 
         <div class="flex flex-row gap-8 items-center relative z-10">
-            <ul class="max-[600px]:hidden flex flex-row gap-8 items-center text-white">
-                <li class="text-lg font-normal hover:text-red-500 py-2.5">
-                    <a href="admin_content.php">
-                        <h1>Dashboard</h1>
-                    </a>
-                </li>
-                <li class="text-lg font-normal hover:text-red-500 py-2.5">
-                    <a href="admin_content.php">
-                        <h1>Content Management</h1>
-                    </a>
-                </li>
-                <li class="text-lg font-normal hover:text-red-500 py-2.5">
-                    <a href="admin_content.php">
-                        <h1>User Management</h1>
-                    </a>
-                </li>
-            </ul>
-
             <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="left-start" class="max-[600px]:hidden w-10 h-10 rounded-full cursor-pointer bg-white" src="img/admin.png" alt="User dropdown">
 
             <!-- Dropdown Menu from clicking user icon -->

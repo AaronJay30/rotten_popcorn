@@ -235,7 +235,7 @@ if (isset($_POST['submit'])) {
 
 
                     <label for="profile" class="flex flex-col gap-y-4 justify-center items-center w-full">
-                        <h1 class="px-4 text-center py-2.5 rounded-xl bg-blue-700 cursor-pointer text-white hover:bg-blue-900 duration-200 w-full">Change Photo</h1>
+                        <h1 class="px-4 text-center py-2.5 rounded-xl bg-blue-700 cursor-pointer text-white hover:bg-blue-900 duration-200 w-full">Change Poster</h1>
                     </label>
 
                     <input type="file" id="profile" name="file" class="hidden" form="updateMovieForm">

@@ -256,9 +256,9 @@ if (isset($_POST['submit'])) {
                                     <label for="year" class="block mb-2 text-sm font-medium text-gray-900">Movie Year Release</label>
                                     <input type="text" id="year" name="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Release" required>
                                 </div>
-                                <div>
+                                <div class="col-span-2">
                                     <label for="genre" class="block mb-2 text-sm font-medium text-gray-900">Movie Genre</label>
-                                    <input type="text" id="genre" name="genre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Year Release" required>
+                                    <input type="text" id="genre" name="genre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Genre" required>
                                 </div>
                                 <div class="col-span-2">
                                     <label for="synopsis" class="block mb-2 text-sm font-medium text-gray-900">Movie Synopsis</label>

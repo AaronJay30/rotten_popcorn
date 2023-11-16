@@ -280,7 +280,7 @@ if (isset($_POST['submit'])) {
         <div class="flex flex-row justify-evenly flex-wrap w-full z-1 border-b-4 border-white py-2 border-dotted max-[640px]:grid grid-cols-1 gap-4">
 
             <!-- Dropdown 1 -->
-            <div class="flex justify-center items-center">
+            <!-- <div class="flex justify-center items-center">
 
                 <button data-dropdown-toggle="dropdown-sort" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     SORT
@@ -317,10 +317,10 @@ if (isset($_POST['submit'])) {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Dropdown 2 -->
-            <div class="flex justify-center items-center">
+            <!-- <div class="flex justify-center items-center">
                 <button data-dropdown-toggle="dropdown-genre" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     GENRE
                     <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -384,14 +384,14 @@ if (isset($_POST['submit'])) {
                     </div>
 
                 </div>
-            </div>
+            </div> -->
 
             <!-- Dropdown 5 -->
-            <div class="flex justify-center items-center">
+            <!-- <div class="flex justify-center items-center">
                 <button class="w-full text-center text-white flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium bg-red-500 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     RESET FILTERS
                 </button>
-            </div>
+            </div> -->
 
             <!-- Search Bar -->
             <div class="flex justify-center items-center w-[30rem]">
@@ -414,7 +414,7 @@ if (isset($_POST['submit'])) {
         </div>
 
         <!-- Movie Cards -->
-        <div id="movieCard" class="grid grid-cols-6 gap-4 max-[1200px]:grid-cols-2 max-[600px]:grid-cols-1 w-full z-1 border-b-4 border-white py-8 border-dotted">
+        <div id="movieCard" class="grid grid-cols-6 gap-4 max-[1200px]:grid-cols-2 max-[600px]:grid-cols-1 w-full z-1 py-8">
             <!-- Each Movie Card Gets Displayed Inside This Div -->
         </div>
 

@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 
             $_SESSION['userID'] = $result[0]['userID'];
             if ($result[0]['role'] == "Admin") {
-                header("Location: admin_content.php");
+                header("Location: admin.php");
             } else {
                 header("Location: index.php");
             }

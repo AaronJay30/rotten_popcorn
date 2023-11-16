@@ -41,7 +41,7 @@
 
     <!-- NAVBAR -->
     <nav class="w-full py-1 px-8 flex flex-row items-center justify-between max-[600px]:justify-end relative">
-        <a href="admin_content.php" class="logo-container">
+        <a href="admin.php" class="logo-container">
             <img src="img/RottenPopCorn(Text).png" alt="Rotten Popcorn" class="h-20 max-[600px]:hidden">
             <img src="img/RottenPopCorn(Logo).png" alt="Rotten Popcorn" class="h-20 max-[600px]:block hidden">
         </a>

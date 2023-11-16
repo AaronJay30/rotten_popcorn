@@ -1,3 +1,13 @@
+<?php
+
+require "./config/db.php";
+$movieDB = new myDB();
+
+$movieDB->select('review', '*');
+$reviews = $movieDB->res;
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -134,10 +144,6 @@
     
     <!-- CONTAINER -->
     <div class="container relative p-10 mx-auto mt-24 rounded-lg overflow-auto border-4 border-white">
-        <!-- <div class="flex justify-center items-center w-full z-1 border-b-4 border-white pb-8 border-dotted"> -->
-            <!-- <div class="col-span-2  max-[600px]:col-span-1"> -->
-                    
-        <!-- </div> -->
 
         <div class="flex flex-row items-center justify-center">
             <h3 class="text-3xl font-bold text-white">Edit Movie Info</h3>
@@ -183,7 +189,7 @@
 
                         <div class="mb-6 w-full">                        
                             <label for="movie_genre" class="block mb-2 text-sm font-medium text-white">Edit Movie Genres</label>
-                            <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-transparent border-0 border-b-2 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" type="button">Choose Genres <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-transparent border-0 border-b-2 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" type="button">Choose Genres <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg></button>
 
@@ -226,7 +232,7 @@
 
                     <div class="flex flex-col mb-6">
                         <label for="movie_synopsis" class="block mb-2 text-sm font-medium text-white">Synopsis</label>
-                        <textarea id="movie_synopsis" rows="4" class="block p-2.5 w-full text-sm text-white bg-transparent rounded-lg border border-white focus:ring-blue-500 focus:border-blue-500 placeholder-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none" placeholder="Write your thoughts here..."></textarea>
+                        <textarea id="movie_synopsis" rows="4" class="block p-2.5 w-full text-sm text-white bg-transparent rounded-lg border border-white focus:ring-blue-500 focus:border-blue-500 placeholder-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none" placeholder="Write a brief summary of the movie here..."></textarea>
                     </div>
 
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
@@ -242,7 +248,7 @@
                 <h3 class="text-3xl font-bold text-white">Ratings and Reviews</h3>
             </div>
 
-            <div class="grid grid-cols-2 m-6 p-2">
+            <div id="reviewCard" class="grid grid-cols-2 m-6 p-2">
                 <!-- Rating and Review 1 -->
                 <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 m-1 md:p-12">
                 <article>
@@ -328,27 +334,63 @@
 <!-- SCRIPT -->
 <script>
 
-    $('#burger').on('click', () => {
-        $('#sidebar').toggleClass('left-[0px] ');
-        $('.buttons__burger').toggleClass('top-[40px] ');
-    })
-
-    window.addEventListener('blur', () => {
-        document.title = "I miss you comeback 💔 - RottenPopcorn";
-    })
-
-    window.addEventListener('focus', () => {
-        document.title = "Rotten Popcorn";
-    })
-
-    document.getElementById("showBtn").addEventListener("click", function() {
-        var trailer = document.getElementById("container");
-        if (trailer.style.display !== "block") {
-            trailer.style.display = "block"; // Show the div
-        } else {
-            trailer.style.display = "none";
-        }
+$(document).ready(function(){
+        loadReviews();
     });
+
+    function loadReviews() {
+        $.ajax({
+            url: 'ajax.php',
+            method: 'POST',
+            data: {
+                'movieInfo': true,
+                'showReview': true,
+                'movieID': <?php echo $movieID; ?>,
+            },
+            success: function(result) {
+                var datas = JSON.parse(result);
+
+                var div = ``;
+
+                datas.forEach(function(data) {
+                    console.log(datas);
+                    const inputDate = new Date(data['created_at']);
+                    const reviewDate = new Date(data['review_date']);
+                    const options = {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    };
+                    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(inputDate);
+                    const reviewFormattedDate = new Intl.DateTimeFormat('en-US', options).format(inputDate);
+
+
+                    // Dynamically generate star icons based on the 'rating' value
+                    const rating = data['rating'];
+                    let stars = '';
+                    for (let i = 0; i < 5; i++) {
+                        if (i < rating) {
+                            stars += `<svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>`;
+                        } else {
+                            stars += `<svg class="w-4 h-4 text-gray-300 dark:text-gray-500 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>`;
+                        }
+                    }
+
+
+                    div += ``
+                });
+
+                $('#reviewCard').html(div);
+            },
+            error: function(e) {
+                alert("Oops something went wrong!");
+            }
+        });
+    }
 
 </script>
 

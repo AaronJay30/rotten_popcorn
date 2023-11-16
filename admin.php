@@ -1,3 +1,25 @@
+<?php
+
+require "./config/db.php";
+$movieDB = new myDB();
+
+// if(!isset($_GET['id'])) {
+//     header("Location: index.php");
+// }
+
+// $movieID = $_GET['id'];
+
+// $movieDB->select('movie', '*', " movieID = $movieID");
+
+// $movie = $movieDB->res;
+
+// Fetch data from tbl movie
+$movieDB->select('movie', '*');
+// Get result set
+$movies = $movieDB->res;
+
+?>
+
 <html lang="en">
 
 <head>
@@ -154,15 +176,14 @@
                 <dialog id="modal" class="p-5 backdrop:bg-black backdrop:opacity-80 rounded-2xl w-3/5  max-[1000px]:w-4/5  max-[600px]:w-full">
                     <div class="relative w-full p-10 grid grid-cols-3 max-[1000px]:grid-cols-1 items-center gap-x-8 max-h-full">
                         <div class="flex items-center justify-center w-full col-span-1">
-                            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
+                            <label for="poster" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
                                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                     </svg>
-                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                    <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                 </div>
-                                <input id="dropzone-file" type="file" class="hidden" />
+                                <input id="poster" type="file" class="hidden" />
                             </label>
                         </div>
 
@@ -170,37 +191,26 @@
                         <form class="col-span-2">
                             <div class="grid gap-6 mb-6 md:grid-cols-2">
                                 <div>
-                                    <label for="movie-title" class="block mb-2 text-sm font-medium text-gray-900">Movie Title</label>
-                                    <input type="text" id="movie-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Title" required>
+                                    <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Movie Title</label>
+                                    <input type="text" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Title" required>
                                 </div>
                                 <div>
-                                    <label for="movie-director" class="block mb-2 text-sm font-medium text-gray-900">Movie Director</label>
-                                    <input type="text" id="movie-director" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Director" required>
+                                    <label for="director" class="block mb-2 text-sm font-medium text-gray-900">Movie Director</label>
+                                    <input type="text" id="director" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Director" required>
                                 </div>
                                 <div>
-                                    <label for="movie-release" class="block mb-2 text-sm font-medium text-gray-900">Movie Release</label>
-                                    <input type="text" id="movie-release" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Movie Release" required>
+                                    <label for="year" class="block mb-2 text-sm font-medium text-gray-900">Movie Release</label>
+                                    <input type="text" id="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Movie Release" required>
                                 </div>
-                                <div>
-                                    <label for="movie_genre" class="block mb-2 text-sm font-medium text-gray-900">Edit Movie Genres</label>
-                                        <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-transparent border-0 border-b-2 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" type="button">Choose Genres <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <div class="col-span-1">
+                                    <label for="genre" class="block mb-2 text-sm font-medium text-gray-900">Edit Movie Genres</label>
+                                        <button id="genre" data-dropdown-toggle="dropdownGenre" class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-gray-50 border border-gray-300 rounded-lg" type="button">Choose Genres <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                         </svg></button>
 
                                         <!-- Dropdown menu -->
-                                        <div id="dropdownSearch" class="z-10 hidden rounded-lg shadow w-60 bg-gray-700">
-                                            <div class="p-3">
-                                                <label for="input-group-search" class="sr-only">Search</label>
-                                                <div class="relative">
-                                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                                    </svg>
-                                                    </div>
-                                                    <input type="text" id="input-group-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Genre">
-                                                </div>
-                                            </div>
-                                            <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+                                        <div id="dropdownGenre" class="z-10 hidden rounded-lg shadow w-60 bg-gray-600 p-3">
+                                            <ul class="h-48 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
                                                 <li>
                                                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                                     <input id="checkbox-item-11" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
@@ -222,14 +232,14 @@
                                             </ul>
                                         </div>
                                 </div>
-                                <div>  
-                                    <label for="movie-synopsis" class="block mb-2 text-sm font-medium text-gray-900">Movie Synopsis</label>
+                                <div class="col-span-2">  
+                                    <label for="synopsis" class="block mb-2 text-sm font-medium text-gray-900">Movie Synopsis</label>
                                     <div>
-                                        <textarea id="movie-synopsis" rows="4" class="block p-2.5 w-full text-sm text-white bg-transparent rounded-lg border border-white focus:ring-blue-500 focus:border-blue-500 placeholder-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none" placeholder="Write your thoughts here..."></textarea>
+                                        <textarea id="synopsis" rows="4" class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus:ring-blue-500 focus:border-blue-500 resize-none" placeholder="Write a brief summary of the movie here..."></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                             <button onclick="modal.close(modal)" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
                         </form>
                     </div>
@@ -375,112 +385,62 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-6 gap-4 max-[1200px]:grid-cols-2 max-[600px]:grid-cols-1 w-full z-1 border-b-4 border-white py-8 border-dotted">
-
-            <!-- Movie Card 1 -->
-            <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow group">
-
-                <!-- Movie Poster -->
-                <div class="relative w-full">
-                    <img class=" p-3 rounded-t-lg relative z-0 group-hover:blur-sm duration-100" src="./img/posters/parasite.jpg" alt="Movie Poster" />
-
-                    <div class="absolute w-full py-5 flex flex-row gap-y-2 items-center justify-evenly duration-300 bottom-1 opacity-0 group-hover:bottom-[35%] group-hover:opacity-100">
-                        <!-- Redirect to Detailed Info of Movie -->
-                        <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center mr-2"><i class='bx bx-edit bx-sm'></i></button>
-                        <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center mr-2"><i class='bx bx-trash bx-sm'></i></button>
-                    </div>
-                </div>
-
-                <!-- Movie Title -->
-                <div class="px-2 pb-4">
-                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Parasite (2019)</h5>
-                </div>
-
-            </div>
-
-            <!-- Movie Card 2 -->
-            <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <a href="#">
-                    <img class="p-3 rounded-t-lg" src="./img/posters/eeaao.jpg" alt="Movie Poster" />
-                </a>
-
-                <div class="px-2 pb-4">
-                    <a href="#">
-                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Everything Everywhere All At Once (2022)</h5>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Movie Card 3 -->
-            <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <a href="#">
-                    <img class="p-3 rounded-t-lg" src="./img/posters/barbie2023.jpg" alt="Movie Poster" />
-                </a>
-
-                <div class="px-2 pb-4">
-                    <a href="#">
-                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Barbie (2023)</h5>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Movie Card 4 -->
-            <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <a href="#">
-                    <img class="p-3 rounded-t-lg" src="./img/posters/fight-club.jpg" alt="Movie Poster" />
-                </a>
-
-                <div class="px-2 pb-4">
-                    <a href="#">
-                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Fight Club (1999)</h5>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Movie Card 5 -->
-            <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <a href="#">
-                    <img class="p-3 rounded-t-lg" src="./img/posters/joker.jpg" alt="Movie Poster" />
-                </a>
-
-                <div class="px-2 pb-4">
-                    <a href="#">
-                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Joker (2019)</h5>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Movie Card 6 -->
-            <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <a href="#">
-                    <img class="p-3 rounded-t-lg" src="./img/posters/spider-man-itsv.jpg" alt="Movie Poster" />
-                </a>
-
-                <div class="px-2 pb-4">
-                    <a href="#">
-                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Spider-Man: Into The Spider-Verse (2018)</h5>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Movie Card 7 -->
-            <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow">
-                <a href="#">
-                    <img class="p-3 rounded-t-lg" src="./img/posters/knives-out.jpg" alt="Movie Poster" />
-                </a>
-
-                <div class="px-2 pb-4">
-                    <a href="#">
-                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center">Knives Out (2019)</h5>
-                    </a>
-                </div>
-            </div>
-
+        <!-- Movie Cards -->
+        <div id="movieCard" class="grid grid-cols-6 gap-4 max-[1200px]:grid-cols-2 max-[600px]:grid-cols-1 w-full z-1 border-b-4 border-white py-8 border-dotted">
+            <!-- Each Movie Card Gets Displayed Inside This Div -->
         </div>
 
     </div>
 </body>
+<script>
 
+    const modal = document.getElementById('modal');
+    modal.addEventListener('click', (event) => {
+        if(event.target === modal) {
+            modal.close();
+        }
+    });
 
+    $(document).ready(function(){
+        loadMovies();
+    });
 
+    function loadMovies() {
+        $.ajax({
+            url: "ajax.php",
+            method: "POST",
+            data: {
+                'getMovie': true,
+                "getAllMovies": true,
+            },
+            success: function(result) {
+                var datas = JSON.parse(result);
+
+                var div = ``;
+                datas.forEach(function(data) {
+                    div += `
+                    <div class="w-full max-w-sm bg-[#F0EAD6] border border-gray-200 rounded-lg shadow group">
+                        <div class="relative w-full">
+                            <img class="p-3 rounded-t-lg relative z-0 group-hover:blur-sm duration-100" src="./img/posters/` + data['poster'] + ` " alt="Movie Poster" />
+                            <div class="absolute w-full py-5 flex flex-row gap-y-2 items-center justify-evenly duration-300 bottom-1 opacity-0 group-hover:bottom-[35%] group-hover:opacity-100">
+                                <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center"><i class='bx bx-edit bx-sm'></i></button>
+                                <button onclick="window.location.href='admin_movie.php'" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-base p-2.5 text-center inline-flex items-center"><i class='bx bx-trash bx-sm'></i></button>
+                            </div>
+                        </div>
+                        <div class="px-2 pb-4">
+                            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-900 text-center"> ` + data['title'] + ` (` + data['year'] + `) </h5>
+                        </div>
+                    </div>`;
+                });
+
+                $('#movieCard').html(div);
+
+            },
+            error: function(error) {
+                alert("Oops something went wrong!");
+            }
+        })
+    }
+
+</script>
 </html>

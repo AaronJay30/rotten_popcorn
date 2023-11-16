@@ -528,6 +528,48 @@ if (isset($_POST['submit'])) {
     document.getElementById("profile").onchange = function() {
         document.getElementById('profileImage').src = URL.createObjectURL(this.files[0]);
     };
+
+    $('#searchInput').on("input", function(){
+        var searchMovies = $(this).val().trim();
+        if (searchMovies !== "") {
+            $.ajax({
+                url: "ajax.php",
+                method: "POST",
+                data: {
+                    "searchMovies": true,
+                    "query": searchMovies
+                },
+                success: function (result) {
+                    var searchResults = JSON.parse(result);
+
+                    $('#movieCard').empty();
+
+                    if(searchResults.length > 0) {
+                        searchResults.forEach(function(movie) {
+                            var movieHtml = `
+                                <div class="my-3">
+                                    <h3>${movie.title} (${movie.year})</h3>
+                                    <!-- Add other movie details as needed -->
+                                </div>
+                            `;            
+
+                            $('#movieCard').append(movieHtml);  
+
+                        });
+                    } else {
+                        $('#movieCard').html('<h1 class="text-white text-center">No Results Found</h1>')
+                    }
+                },
+                error: function (error) {
+                    alert("Oops something went wrong!");
+                }
+            });
+        } else {
+            // If the search input is empty, load all movies
+            loadMovies();
+        }
+    });
+
 </script>
 
 </html>

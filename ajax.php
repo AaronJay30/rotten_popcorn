@@ -221,3 +221,4 @@ function generateShortSubject($comment)
 
     return $firstContent;
 }
+

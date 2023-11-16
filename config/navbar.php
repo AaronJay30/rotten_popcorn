@@ -1,3 +1,20 @@
+<?php
+
+if (isset($_COOKIE['userID'])) {
+    $profileDB = new myDB();
+
+    $userID = $_COOKIE['userID'];
+    $profileDB->select('user', '*', " userID = $userID");
+
+    $profile = $profileDB->res;
+
+    $picture = $profile[0]['profile_picture'];
+    $email = $profile[0]['email'];
+    $username = $profile[0]['username'];
+}
+
+?>
+
 <!-- BURGER MENU -->
 <div class="absolute left-[-3000px] z-10 h-full w-full duration-500 ease-in-out flex flex-col items-center" id='sidebar'>
     <div class="w-full flex justify-end border-b-4 border-b-white px-10 pt-4 ">
@@ -24,12 +41,19 @@
                     <h1>Contacts</h1>
                 </a>
             </li>
-            <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
+            <?php
+            if (isset($_COOKIE['userID'])) {
+                echo '
+                <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
                 <a href="setting.php" class="flex flex-row w-full justify-center items-center gap-4">
-                    <i class='bx bxs-cog'></i>
+                    <i class="bx bxs-cog"></i>
                     <h1>Settings</h1>
                 </a>
             </li>
+                ';
+            }
+            ?>
+
             <li class="text-3xl uppercase duration-300 font-bold hover:text-red-500 hover:bg-white py-10 w-full text-center">
                 <a href="login.php" class="">
                     <h1>Sign in</h1>
@@ -38,17 +62,23 @@
 
         </ul>
 
-        <div class="w-full bg-red-900 py-4 px-8 gap-10 flex flex-row items-center">
-            <div class="w-auto">
-                <img src="img/sample.webp" alt="" class="h-24 rounded-full">
+        <?php
+        if (isset($_COOKIE['userID'])) {
+            echo '
+                <div class="w-full bg-red-900 py-4 px-8 gap-10 flex flex-row items-center">
+                <div class="w-auto">
+                    <img src="img/' . $picture . 'p" alt="" class="h-24 rounded-full">
+                </div>
+                <div class="flex flex-col text-white gap-1 w-full">
+                    <h1 class="text-2xl font-bold uppercase border-b-2 border-b-white w-full">' . $username . '</h1>
+                    <span>' . $email . '</span>
+                </div>
+    
+    
             </div>
-            <div class="flex flex-col text-white gap-1 w-full">
-                <h1 class="text-2xl font-bold uppercase border-b-2 border-b-white w-full">Full Name</h1>
-                <span>aaaaarondalla@gmail.com</span>
-            </div>
-
-
-        </div>
+                ';
+        }
+        ?>
     </div>
 </div>
 
@@ -98,29 +128,44 @@
                     <h1>Contacts</h1>
                 </a>
             </li>
-            <!-- <li class="text-lg font-semibold hover:text-red-500 bg-white text-black px-8 py-2.5 rounded-full hover:bg-black">
-                    <a href="" class="">
-                        <h1>Sign in</h1>
-                    </a>
-                </li> -->
+
+            <?php
+            if (!isset($_COOKIE['userID'])) {
+                echo '
+                    <li class="text-lg font-semibold hover:text-red-500 bg-white text-black px-8 py-2.5 rounded-full hover:bg-black">
+                        <a href="login.php" class="">
+                            <h1>Sign in</h1>
+                        </a>
+                    </li>
+                ';
+            }
+            ?>
+
             <!-- <button type="button" class="mb-2 md:mb-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tooltip bottom</button> -->
 
         </ul>
+        <?php
+        if (isset($_COOKIE['userID'])) {
+            echo '
+                <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="left-start" class="max-[600px]:hidden w-10 h-10 rounded-full cursor-pointer" src="img/profile/' . $picture . '" alt="User dropdown">
+            ';
+        }
 
-        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="left-start" class="max-[600px]:hidden w-10 h-10 rounded-full cursor-pointer" src="img/sample.webp" alt="User dropdown">
+        ?>
 
         <!-- Dropdown menu -->
         <div id="userDropdown" class="relative hidden bg-white divide-y divide-red-300 rounded-lg shadow w-44">
             <div class="px-4 py-3 text-sm text-red-900 ">
-                <div class="font-bold">Bonnie Green</div>
-                <div class="font-medium truncate">name@flowbite.com</div>
+                <div class="font-bold"><?php echo $username ? $username : '' ?></div>
+                <div class="font-medium truncate"><?php echo $email ? $email : '' ?></div>
             </div>
 
             <div class="py-1">
                 <a href="setting.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white duration-300">Settings</a>
             </div>
             <div class="py-1">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white duration-300">Sign out</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white duration-300" onclick="logout()">Sign out</a>
+
             </div>
         </div>
     </div>
@@ -141,4 +186,13 @@
     window.addEventListener('focus', () => {
         document.title = "Rotten Popcorn";
     })
+
+    function logout() {
+        // Set the cookie expiration time to a past date to delete the cookie
+        document.cookie = 'userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+        // Redirect to the sign-in page or any other appropriate page
+        window.location.href = 'index.php'; // Change 'signin.php' to your actual sign-in page
+    }
 </script>

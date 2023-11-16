@@ -83,3 +83,107 @@ if (isset($_POST['registerUser'])) {
         echo json_encode($error);
     }
 }
+
+if (isset($_POST['addReview'])) {
+    $reviewData = $_POST['datas'];
+
+    $comment = $reviewData['review'];
+    $stars = $reviewData['stars'];
+    $movieID = $reviewData['movieID'];
+    $userID = $_COOKIE['userID'];
+
+    $subject = generateShortSubject($comment);
+
+    $trimSubject = str_replace("'", "\'", $subject);
+    $trimComment = str_replace("'", "\'", $comment);
+
+    print_r($trimSubject);
+
+    $data = array(
+        'movieID' => $movieID,
+        'userID' => $userID,
+        'rating' => $stars,
+        'review_subject' => $trimSubject,
+        'review_text' => $trimComment,
+        'review_date' => date('Y-m-d'),
+    );
+
+    $db->insert('review', $data);
+
+    $where = ' movieID = ' . $movieID;
+    $db->select('review', 'rating', $where);
+
+    // Check if there are reviews for the movie
+    if (!empty($db->res)) {
+        // Calculate the average rating
+        $totalRating = array_sum(array_column($db->res, 'rating'));
+        $averageRating = $totalRating / (count($db->res) * 5);
+
+        // Convert the average rating to a percentage
+        $percentage = $averageRating * 100;
+
+        $updateData = array('average_rating' => $percentage, 'total_review_count' => count($db->res));
+        $updateWhere = 'movieID = ' . $movieID;
+        $db->update('movie', $updateData, $updateWhere);
+
+        echo json_encode($db->res);
+    }
+}
+
+function generateShortSubject($comment)
+{
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+
+    $userReview = "Create a one brief title for this user's movie review using 4-5 words. Avoid using apostrophes or quotation marks: " . $comment;
+
+
+    $post_data = array(
+        'model' => 'gpt-3.5-turbo',
+        'messages' => array(
+            array('role' => 'system', 'content' => 'You are a helpful assistant.'),
+            array('role' => 'user', 'content' => $userReview),
+            // Add more user messages as needed
+        ),
+        'temperature' => 0,
+        'max_tokens' => 250,
+        'top_p' => 1,
+        'frequency_penalty' => 0,
+        'presence_penalty' => 0
+    );
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+
+    $headers = array();
+    $headers[] = 'Content-Type: application/json';
+    $headers[] = 'Authorization: Bearer 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';
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo 'Error:' . curl_error($ch);
+    }
+
+    curl_close($ch);
+
+    // Assuming $response contains the API response
+    $responseData = json_decode($response, true);
+
+    // Check if the response has choices
+    if (isset($responseData['choices']) && !empty($responseData['choices'])) {
+        // Get the content from the first message
+        $firstContent = $responseData['choices'][0]['message']['content'];
+    } else {
+        // Handle the case where choices are not present in the response
+        echo 'Error: No choices in the response.';
+    }
+
+
+    return $firstContent;
+}

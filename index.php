@@ -1,5 +1,5 @@
 <?php
-session_start();
+require "config/db.php";
 
 ?>
 
@@ -153,7 +153,7 @@ session_start();
 <body>
     <!-- <?php include 'config/loader.php'; ?> -->
 
-    <?php include 'config/navbar.php'; ?>
+    <?php require_once 'config/navbar.php'; ?>
 
     <div class="container relative p-10 flex flex-col mx-auto mt-24 rounded-lg overflow-auto border-4 border-white">
         <div class="first-layer grid grid-cols-4 gap-4 max-[1200px]:grid-cols-2 max-[600px]:grid-cols-1 w-full z-1 border-b-4 border-white pb-8 border-dotted">

@@ -1,8 +1,22 @@
 <?php
 
+
 require "config/db.php";
 $movieDB = new myDB();
 $starsCountDB = new myDB();
+$commentDB = new myDB();
+
+if (isset($_COOKIE['userID'])) {
+    $userID = $_COOKIE['userID'];
+    $commentDB->select('user', '*', " userID = $userID");
+
+    $comment = $commentDB->res;
+
+    $picture = $comment[0]['profile_picture'];
+}
+
+$userID = $_COOKIE['userID'];
+
 
 if (!isset($_GET['id'])) {
     header("Location: index.php");
@@ -164,6 +178,73 @@ $starsCount = $starsCountDB->res;
     #sidebar {
         background: rgba(180, 33, 33, 1);
     }
+
+    .rating {
+        display: inline-block;
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        letter-spacing: 10px;
+        font-size: 30px;
+    }
+
+    .rating label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .rating label:last-child {
+        position: static;
+    }
+
+    .rating label:nth-child(1) {
+        z-index: 5;
+    }
+
+    .rating label:nth-child(2) {
+        z-index: 4;
+    }
+
+    .rating label:nth-child(3) {
+        z-index: 3;
+    }
+
+    .rating label:nth-child(4) {
+        z-index: 2;
+    }
+
+    .rating label:nth-child(5) {
+        z-index: 1;
+    }
+
+    .rating label input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+    .rating label .icon {
+        float: left;
+        color: transparent;
+    }
+
+    .rating label:last-child .icon {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .rating:not(:hover) label input:checked~.icon,
+    .rating:hover label:hover input~.icon {
+        color: #FDE047;
+    }
+
+    .rating label input:focus:not(:checked)~.icon:last-child {
+        color: rgba(255, 255, 255, 1);
+        text-shadow: 0 0 5px #09f;
+    }
 </style>
 
 <body>
@@ -229,23 +310,75 @@ $starsCount = $starsCountDB->res;
                     <!-- Leave a comment -->
                     <div class="flex flex-col mt-4 gap-y-4 border-b-2 pb-8">
                         <h1 class="text-2xl font-bold text-white">Leave a review</h1>
-                        <!-- <form>
-                            <label for="chat" class="sr-only">Your message</label>
-                            <div class="flex items-end px-3 py-2 rounded-lg">
-                                <img src="img/sample.webp" alt="Profile" class="w-12 h-10 rounded-full duration-200 mr-4">
-                                <div class="flex flex-col px-4 w-full relative gap-y-4">
-                                    <textarea id="chat" rows="1" class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-red-500 focus:border-red-500 font-medium" placeholder="Your message..."></textarea>
-                                </div>
-                                <button type="submit" class="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100">
-                                    <svg class="w-5 h-5 rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-                                        <path d="m17.914 18.594-8-18a1 1 0 0 0-1.828 0l-8 18a1 1 0 0 0 1.157 1.376L8 18.281V9a1 1 0 0 1 2 0v9.281l6.758 1.689a1 1 0 0 0 1.156-1.376Z" />
-                                    </svg>
-                                    <span class="sr-only">Send message</span>
-                                </button>
-                            </div>
-                        </form> -->
 
-                        <div class="w-full text-center text-xl text-white">To leave a comment, you are required to <a href="login.php" class="text-red-400 hover:underline">login</a> to your account. </div>
+                        <form id="reviewForm">
+                            <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-transparent ">
+                                <div class="px-4 py-2  rounded-t-lg bg-gray-300">
+                                    <label for="comment" class="sr-only">Your comment</label>
+                                    <textarea id="comment" name="review" rows="4" class="w-full px-0 text-sm text-gray-900 bg-gray-300 border-0 focus:ring-0 placeholder-gray-600" placeholder="Write a comment..." required></textarea>
+                                </div>
+                                <input type="hidden" name="movieID" value="<?php echo $movieID ?>">
+                                <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+                                    <div class="flex flex-row gap-4">
+                                        <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-red-700 rounded-lg focus:ring-4 focus:ring-red-200 dark:focus:ring-red-900 hover:bg-red-800">
+                                            Post review
+                                        </button>
+                                        <img class="w-10 h-10 p-1 rounded-full bg-white" src="img/profile/Arjay.png" alt="Bordered avatar">
+                                    </div>
+                                    <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
+                                        <div class="rating">
+                                            <label>
+                                                <input type="radio" name="stars" required value="1" />
+                                                <span class="icon">★</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="stars" required value="2" />
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="stars" required value="3" />
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="stars" required value="4" />
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="stars" required value="5" />
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <?php
+                        if (isset($_COOKIE['userID'])) {
+                            echo '
+                                
+                                ';
+                        } else {
+                            echo '
+                            <div class="w-full text-center text-xl text-white">To leave a comment, you are required to <a href="login.php" class="text-red-400 hover:underline">login</a> to your account. </div>
+                            ';
+                        }
+                        ?>
+
+
+
+
+
                     </div>
 
                     <div class="w-full mt-4 ">
@@ -408,6 +541,34 @@ $starsCount = $starsCountDB->res;
             }
         });
     }
+
+    $("#reviewForm").on("submit", function(e) {
+        e.preventDefault();
+        var datas = $(this).serializeArray();
+        var datas_array = {};
+        $.map(datas, function(data, cnt) {
+            datas_array[data['name']] = data['value'];
+        });
+        $.ajax({
+            url: "ajax.php",
+            method: "POST",
+            data: {
+                "addReview": true,
+                "datas": datas_array
+            },
+            success: function(result) {
+                console.log(result);
+                loadReviews();
+                $("#reviewForm")[0].reset();
+            },
+            error: function(error) {
+                console.log(error);
+                alert("Oops, something went wrong");
+            }
+        })
+
+        // console.log(datas)
+    })
 </script>
 
 </html>

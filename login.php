@@ -1,5 +1,14 @@
 <?php
 
+if (isset($_COOKIE['userID'])) {
+
+    if (isset($_COOKIE['role']) == "Admin") {
+        header('location:admin_content.php');
+    } else {
+        header('location:index.php');
+    }
+}
+
 require "config/db.php";
 $db = new myDB();
 
@@ -17,11 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 
         $result = $db->res;
 
-
         if ($result && md5($password) == $result[0]['password']) {
-            session_start();
 
-            $_SESSION['userID'] = $result[0]['userID'];
+            // Set cookies
+            setcookie('userID', $result[0]['userID'], time() + (86400 * 30), "/");
+            setcookie('role', $result[0]['role'], time() + (86400 * 30), "/");
+
             if ($result[0]['role'] == "Admin") {
                 header("Location: admin_content.php");
             } else {
@@ -34,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -180,6 +191,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 
                 <button class="bg-red-900 hover:bg-red-700 p-2.5 w-full mt-7 rounded-lg text-white text-xl font-medium" type="submit" name="login">Sign in</button>
 
+                <h2 class="text-center text-white text-xl hover:text-red-700 pt-4 hover:underline duration-200"><a href="register.php">Doesn't have an account?</a></h2>
+
                 <div class="mt-4 flex items-center w-full justify-center">
                     <div class="border-t flex-1 mx-4"></div>
                     <p class="mx-4 mb-0 text-center font-medium dark:text-white">Or</p>
@@ -196,7 +209,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
                     </button>
                 </div>
 
-                <h2 class="text-center text-white text-xl hover:text-red-700 hover:underline duration-200"><a href="register.php">Doesn't have an account?</a></h2>
             </form>
         </div>
     </div>

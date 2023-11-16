@@ -1,3 +1,67 @@
+<?php
+require "config/db.php";
+
+if (isset($_COOKIE['userID'])) {
+    $userID = $_COOKIE['userID'];
+
+    $userDB = new myDB();
+    $updateUser = new myDB();
+
+    $statusMsg = '';
+
+    $targetDir = "img/profile/";
+
+    $userDB->select('user', '*', " userID = $userID");
+
+    $user = $userDB->res;
+
+    $datas = array();
+
+    if (isset($_POST['update'])) {
+
+        if (!empty($_FILES["file"]["name"])) {
+            $fileName = basename($_FILES["file"]["name"]);
+            $targetFilePath = $targetDir . $fileName;
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+            // Allow certain file formats 
+            $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+            if (in_array($fileType, $allowTypes)) {
+                // Upload file to server 
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
+                    // Insert image file name into database 
+                    $datas['profile_picture'] = $fileName;
+                } else {
+                    $statusMsg = "Sorry, there was an error uploading your file.";
+                }
+            } else {
+                $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
+            }
+        } else {
+            $statusMsg = 'Please select a file to upload.';
+        }
+
+
+
+        $datas['email'] = $_POST['email'];
+        $datas['username'] = $_POST['username'];
+        $datas['birthday'] = $_POST['birthday'];
+
+        // print_r($datas);
+
+        $updateUser->update('user', $datas, " userID = $userID");
+
+        $result = $updateUser->res;
+
+        if ($result) {
+            header("Location: setting.php?message=" . $statusMsg);
+        }
+    }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -202,45 +266,62 @@
 
     <?php include 'config/navbar.php'; ?>
 
+    <div class="absolute right-10 bottom-5">
+        <?php
+        // Check if the "message" parameter is present in the URL and has the value "success"
+        if (isset($_GET['message'])) {
+            echo '
+                <div id="toast-interactive" class="w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-400" role="alert">
+                    <div class="flex">
+                        <div class="mx-3 text-sm font-normal">
+                            <span class="mb-1 text-lg text-gray-900 dark:text-white">' + $_GET['message'] + '</span>
+                        </div>
+                    </div>
+                </div>';
+        }
+        ?>
+    </div>
+
     <div class="container relative flex flex-col mx-auto mt-24 rounded-lg overflow-auto border-4 border-white w-full py-10">
         <h1 class="w-full text-center uppercase font-bold text-5xl text-white border-b-2 border-white pb-4">PROFILE SETTINGS</h1>
 
         <div class="mx-auto py-10">
-            <img class="w-1/4 max-[800px]:w-2/4 mx-auto rounded-2xl mb-4" src="img/profile/sample.webp" alt="Extra large avatar">
+            <img id="profileImage" class="w-1/4 max-[800px]:w-2/4 mx-auto rounded-2xl mb-4" src="img/profile/<?php echo $user[0]['profile_picture'] ?>" alt="Extra large avatar">
 
             <label for="profile" class="flex flex-col gap-y-4 justify-center items-center">
                 <h1 class="px-4 text-center py-2.5 rounded-xl bg-blue-700 cursor-pointer text-white hover:bg-blue-900 duration-200 w-1/4">Change Photo</h1>
             </label>
-            <input type="file" id="profile" class="hidden">
+            <input type="file" id="profile" name="file" class="hidden" form="updateUserForm">
+
             <hr class="mt-4">
 
         </div>
 
-        <form class="grid grid-cols-2 max-[800px]:grid-cols-1 max-[800px]:px-10 px-32 gap-x-4">
+        <form class="grid grid-cols-2 max-[800px]:grid-cols-1 max-[800px]:px-10 px-32 gap-x-4" action='setting.php' id="updateUserForm" method="POST" enctype="multipart/form-data">
             <div class="col-span-1">
                 <div class="form-control w-full">
-                    <input type="text" class="focus:ring-0" required="">
+                    <input type="text" name="username" class="focus:ring-0" required="" value="<?php echo $user[0]['username'] ?>">
                     <label>
-                        <span style="transition-delay:0ms">F</span><span style="transition-delay:50ms">u</span><span style="transition-delay:100ms">l</span><span style="transition-delay:150ms">l</span><span style="transition-delay:200ms">n</span><span style="transition-delay:250ms">a</span><span style="transition-delay:300ms">m</span><span style="transition-delay:350ms">e</span>
+                        <span style="transition-delay:0ms">U</span><span style="transition-delay:50ms">s</span><span style="transition-delay:100ms">e</span><span style="transition-delay:150ms">r</span><span style="transition-delay:200ms">n</span><span style="transition-delay:250ms">a</span><span style="transition-delay:300ms">m</span><span style="transition-delay:350ms">e</span>
                     </label>
                 </div>
             </div>
             <div class="col-span-1">
                 <div class="form-control w-full flex flex-col">
                     <label for="" class="birthdate">Birthdate</label>
-                    <input type="date" class="focus:ring-0" required="">
+                    <input type="date" class="focus:ring-0" name="birthday" required="" value="<?php echo $user[0]['birthday'] ?>">
                 </div>
             </div>
 
-            <div class="col-span-1">
+            <div class="col-span-2">
                 <div class="form-control w-full">
-                    <input type="text" class="focus:ring-0" required="">
+                    <input type="text" class="focus:ring-0" name="email" required="" value="<?php echo $user[0]['email'] ?>">
                     <label>
                         <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">m</span><span style="transition-delay:100ms">a</span><span style="transition-delay:150ms">i</span><span style="transition-delay:200ms">l</span>
                     </label>
                 </div>
             </div>
-
+            <!-- 
             <div class="col-span-1">
                 <div class="form-control w-full">
                     <input type="text" class="focus:ring-0" required="">
@@ -248,13 +329,19 @@
                         <span style="transition-delay:0ms">P</span><span style="transition-delay:50ms">a</span><span style="transition-delay:100ms">s</span><span style="transition-delay:150ms">s</span><span style="transition-delay:200ms">w</span><span style="transition-delay:250ms">o</span><span style="transition-delay:300ms">r</span><span style="transition-delay:350ms">d</span>
                     </label>
                 </div>
-            </div>
+            </div> -->
 
             <div class="col-span-2 flex justify-end">
-                <button class="bg-red-600 text-white uppercase text-xl font-bold px-4 py-2.5 w-1/2 rounded-2xl">Update</button>
+                <button class="bg-red-600 text-white uppercase text-xl font-bold px-4 py-2.5 w-1/2 rounded-2xl" name="update" type="submit">Update</button>
             </div>
         </form>
 
     </div>
 
 </body>
+
+<script>
+    document.getElementById("profile").onchange = function() {
+        document.getElementById('profileImage').src = URL.createObjectURL(this.files[0]);
+    };
+</script>

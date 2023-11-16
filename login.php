@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     <link rel="icon" type="image/x-icon" href="img/RottenPopCorn(LogoOnly).png">
     <!-- <script src="js/alphine.js" defer></script> -->
     <title>Rotten Popcorn</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <style>
@@ -142,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 </style>
 
 <body>
-
+    
 
     <div class="absolute right-10 bottom-5">
         <?php
@@ -191,9 +192,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
                         Login with Facebook
                     </button>
 
-                    <button class="loginBtn loginBtn--google">
-                        Login with Google
-                    </button>
+                    
+                    <div id="g_id_onload"
+                        data-client_id="742827345984-ta3h5a37mvhroqvq4b6tcnjd84k81hen"
+                    >
+                    </div>
+                    <div class="g_id_signin" data-type="standard"></div>
                 </div>
 
                 <h2 class="text-center text-white text-xl hover:text-red-700 hover:underline duration-200"><a href="register.php">Doesn't have an account?</a></h2>
@@ -220,6 +224,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
             toast.style.display = 'none';
         }
     }, 3000); // 10 seconds in milliseconds
+
+    function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present. 
+            window.location.replace('index.php');
+    } 
+    
 </script>
 
 </html>

@@ -322,7 +322,7 @@
             </div>
 
             <!-- Dropdown 3 -->
-            <div class="flex justify-center items-center">
+            <!-- <div class="flex justify-center items-center">
                 <button data-dropdown-toggle="dropdown-rating" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     RATING
                     <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -386,10 +386,10 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
 
             <!-- Dropdown 4 -->
-            <div class="flex justify-center items-center">
+            <!-- <div class="flex justify-center items-center">
                 <button data-dropdown-toggle="dropdown-score" class="w-full text-center text-gray-900 flex-shrink-0 z-10 inline-flex justify-center items-center py-2.5 px-4 rounded text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
                     AUDIENCE SCORE
                     <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -441,7 +441,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
 
             <!-- Dropdown 5 -->
             <div class="flex justify-center items-center">
